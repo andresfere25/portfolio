@@ -4,35 +4,38 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Andrés Restrepo — BI & Data Analytics</title>
-  <meta name="description" content="Business Intelligence & Data Analytics professional. Bogotá, Colombia." />
+  <meta name="description" content="Business Intelligence & Data Analytics professional based in Bogotá, Colombia." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
-    /* ── Reset & Base ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 16px; }
 
     :root {
-      --bg: #FAF9F6;
-      --bg-alt: #F1EFEA;
-      --ink: #1A1A1A;
-      --ink-light: #5C5C5C;
-      --ink-muted: #9A9A9A;
-      --accent: #B45309;
-      --accent-light: #F59E0B;
-      --accent-bg: #FEF3C7;
-      --border: #E5E2DC;
+      --bg: #FFFFFF;
+      --bg-soft: #F8FAFC;
+      --bg-muted: #F1F5F9;
+      --ink: #0F172A;
+      --ink-mid: #334155;
+      --ink-light: #64748B;
+      --ink-muted: #94A3B8;
+      --accent: #4338CA;
+      --accent-hover: #3730A3;
+      --accent-light: #6366F1;
+      --accent-bg: #EEF2FF;
+      --border: #E2E8F0;
       --card: #FFFFFF;
-      --dark: #111111;
-      --dark-mid: #1E1E1E;
-      --serif: 'DM Serif Display', Georgia, serif;
-      --sans: 'Space Grotesk', system-ui, sans-serif;
-      --mono: 'JetBrains Mono', 'Courier New', monospace;
+      --dark: #0F172A;
+      --dark-card: #1E293B;
+      --heading: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --body: 'Inter', system-ui, sans-serif;
+      --mono: 'IBM Plex Mono', 'Consolas', monospace;
+      --radius: 12px;
     }
 
     body {
-      font-family: var(--sans);
+      font-family: var(--body);
       background: var(--bg);
       color: var(--ink);
       -webkit-font-smoothing: antialiased;
@@ -41,366 +44,371 @@
 
     a { color: inherit; text-decoration: none; }
     ul { list-style: none; }
-    img { max-width: 100%; display: block; }
 
-    .container { max-width: 1120px; margin: 0 auto; padding: 0 2rem; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
 
     /* ── Nav ── */
     .nav {
       position: fixed; top: 0; width: 100%; z-index: 100;
-      background: rgba(250,249,246,0.9);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(226,232,240,0.6);
     }
     .nav-inner {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 1.25rem 2rem; max-width: 1120px; margin: 0 auto;
+      padding: 0.9rem 2rem; max-width: 1100px; margin: 0 auto;
     }
     .nav-logo {
-      font-family: var(--serif); font-size: 1.5rem; color: var(--ink);
-      letter-spacing: -0.02em;
+      font-family: var(--heading); font-weight: 800; font-size: 1.25rem;
+      color: var(--ink); letter-spacing: -0.03em;
     }
-    .nav-logo em { font-style: italic; color: var(--accent); }
+    .nav-logo span { color: var(--accent); }
     .nav-links { display: flex; gap: 2rem; align-items: center; }
     .nav-links a {
-      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--ink-muted);
-      transition: color 0.2s;
+      font-family: var(--body); font-size: 0.88rem; font-weight: 500;
+      color: var(--ink-light); transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--ink); }
     .nav-cta {
-      font-size: 0.8rem !important; font-weight: 600 !important;
-      color: var(--accent) !important; letter-spacing: 0.08em;
-      border-bottom: 1.5px solid var(--accent);
-      padding-bottom: 2px;
+      font-size: 0.85rem !important; font-weight: 600 !important;
+      color: #fff !important; background: var(--accent);
+      padding: 0.5rem 1.25rem; border-radius: 8px;
+      transition: background 0.2s;
     }
-    .nav-cta:hover { color: var(--ink) !important; border-color: var(--ink); }
+    .nav-cta:hover { background: var(--accent-hover); }
     .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
     .mobile-toggle span {
-      display: block; width: 20px; height: 1.5px; background: var(--ink);
-      margin: 5px 0; transition: 0.3s;
+      display: block; width: 20px; height: 2px; background: var(--ink);
+      margin: 4px 0; border-radius: 2px; transition: 0.3s;
     }
 
     /* ── Hero ── */
     .hero {
-      min-height: 100vh; display: flex; align-items: flex-end;
-      padding-top: 6rem; padding-bottom: 5rem;
+      min-height: 100vh; display: flex; align-items: center;
+      padding-top: 5rem;
+      background: linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 100%);
     }
-    .hero-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
-      align-items: end; width: 100%;
+    .hero-inner { max-width: 700px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--body); font-size: 0.85rem; font-weight: 500;
+      color: var(--accent); background: var(--accent-bg);
+      padding: 0.4rem 1rem; border-radius: 100px;
+      margin-bottom: 2rem;
     }
-    .hero-title {
-      font-family: var(--serif); font-size: clamp(3rem, 6vw, 5.5rem);
-      line-height: 1.05; letter-spacing: -0.03em; color: var(--ink);
+    .hero-badge .dot {
+      width: 8px; height: 8px; background: #22C55E; border-radius: 50%;
+      animation: pulse 2s infinite;
     }
-    .hero-title em { font-style: italic; color: var(--accent); }
-    .hero-right { padding-bottom: 0.5rem; }
-    .hero-intro {
-      font-size: 1.1rem; color: var(--ink-light); line-height: 1.7;
-      max-width: 420px; margin-bottom: 2rem;
-    }
-    .hero-meta {
-      display: flex; flex-direction: column; gap: 0.5rem;
-      font-family: var(--mono); font-size: 0.75rem; color: var(--ink-muted);
-      letter-spacing: 0.02em;
-    }
-    .hero-meta span { display: flex; align-items: center; gap: 0.5rem; }
-    .hero-meta .dot {
-      width: 6px; height: 6px; background: #22c55e; border-radius: 50%;
-      display: inline-block; animation: pulse 2s infinite;
-    }
-    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
 
-    .hero-scroll {
-      position: absolute; bottom: 2rem; left: 50%;
-      transform: translateX(-50%);
-      font-family: var(--mono); font-size: 0.7rem;
-      color: var(--ink-muted); letter-spacing: 0.1em;
-      text-transform: uppercase;
-      animation: float 3s ease-in-out infinite;
+    .hero h1 {
+      font-family: var(--heading); font-weight: 800;
+      font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+      line-height: 1.08; letter-spacing: -0.04em;
+      color: var(--ink); margin-bottom: 1.25rem;
     }
-    @keyframes float { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(6px); } }
+    .hero h1 .name { color: var(--accent); }
 
-    /* ── Section headers ── */
-    .section { padding: 6rem 0; }
-    .section-header {
-      display: flex; align-items: baseline; gap: 1rem;
-      margin-bottom: 3.5rem; border-bottom: 1px solid var(--border);
-      padding-bottom: 1rem;
+    .hero-sub {
+      font-size: 1.2rem; color: var(--ink-light); line-height: 1.6;
+      margin-bottom: 2rem; max-width: 540px;
     }
-    .section-num {
-      font-family: var(--mono); font-size: 0.8rem; color: var(--accent);
-      font-weight: 500;
+    .hero-sub strong { color: var(--ink-mid); font-weight: 600; }
+
+    .hero-actions { display: flex; gap: 0.75rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--body); font-size: 0.92rem; font-weight: 600;
+      color: #fff; background: var(--accent);
+      padding: 0.75rem 1.5rem; border-radius: 10px;
+      transition: background 0.2s, transform 0.15s;
+      border: none; cursor: pointer;
     }
-    .section-title {
-      font-family: var(--serif); font-size: 2.2rem; letter-spacing: -0.02em;
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--body); font-size: 0.92rem; font-weight: 600;
+      color: var(--ink-mid); background: var(--bg);
+      padding: 0.75rem 1.5rem; border-radius: 10px;
+      border: 1.5px solid var(--border);
+      transition: border-color 0.2s, color 0.2s;
+      cursor: pointer;
     }
-    .section-spacer { flex: 1; }
-    .section-subtitle {
-      font-size: 0.8rem; color: var(--ink-muted); letter-spacing: 0.06em;
-      text-transform: uppercase; font-weight: 500;
+    .btn-secondary:hover { border-color: var(--ink-mid); color: var(--ink); }
+
+    .hero-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .hero-chip {
+      font-family: var(--mono); font-size: 0.78rem; font-weight: 400;
+      color: var(--ink-light); padding: 0.3rem 0.75rem;
+      border: 1px solid var(--border); border-radius: 6px;
+      background: var(--bg);
+    }
+
+    /* ── Sections ── */
+    .section { padding: 5rem 0; }
+    .section-alt { background: var(--bg-soft); }
+
+    .section-head {
+      display: flex; align-items: baseline; justify-content: space-between;
+      margin-bottom: 2.5rem; padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-head h2 {
+      font-family: var(--heading); font-weight: 700; font-size: 1.65rem;
+      letter-spacing: -0.02em; color: var(--ink);
+    }
+    .section-head p {
+      font-size: 0.85rem; color: var(--ink-muted); font-weight: 500;
     }
 
     /* ── About ── */
     .about-grid {
-      display: grid; grid-template-columns: 5fr 3fr; gap: 5rem;
+      display: grid; grid-template-columns: 5fr 3fr; gap: 4rem;
     }
-    .about-text { font-size: 1.05rem; color: var(--ink-light); line-height: 1.8; }
-    .about-text p + p { margin-top: 1.25rem; }
+    .about-text { font-size: 0.95rem; color: var(--ink-mid); line-height: 1.8; }
+    .about-text p + p { margin-top: 1rem; }
     .about-text strong { color: var(--ink); font-weight: 600; }
-    .about-aside { border-left: 1px solid var(--border); padding-left: 2.5rem; }
-    .aside-block + .aside-block { margin-top: 2rem; }
-    .aside-label {
-      font-family: var(--mono); font-size: 0.7rem; color: var(--ink-muted);
-      text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem;
+
+    .about-side {}
+    .side-block + .side-block { margin-top: 1.75rem; }
+    .side-title {
+      font-family: var(--heading); font-weight: 700; font-size: 0.8rem;
+      text-transform: uppercase; letter-spacing: 0.04em;
+      color: var(--ink); margin-bottom: 0.5rem;
     }
-    .aside-list { display: flex; flex-direction: column; gap: 0.4rem; }
-    .aside-list li {
-      font-size: 0.9rem; color: var(--ink-light);
-      padding-left: 1rem; position: relative;
+    .side-list { display: flex; flex-direction: column; gap: 0.3rem; }
+    .side-list li {
+      font-size: 0.88rem; color: var(--ink-mid);
+      padding-left: 0.85rem; position: relative;
     }
-    .aside-list li::before {
+    .side-list li::before {
       content: ''; position: absolute; left: 0; top: 0.55rem;
       width: 4px; height: 4px; background: var(--accent); border-radius: 50%;
     }
     .stats-row {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;
+      display: flex; gap: 1.5rem; margin-top: 1.5rem;
+      padding-top: 1.25rem; border-top: 1px solid var(--border);
     }
-    .stat-card {
-      padding: 1.25rem; background: var(--bg-alt); border-radius: 8px;
-      text-align: center;
+    .stat {}
+    .stat-val {
+      font-family: var(--heading); font-weight: 800; font-size: 1.5rem;
+      color: var(--ink);
     }
-    .stat-num {
-      font-family: var(--serif); font-size: 1.8rem; color: var(--ink);
-      line-height: 1;
-    }
-    .stat-label {
-      font-size: 0.7rem; color: var(--ink-muted); margin-top: 0.25rem;
-      text-transform: uppercase; letter-spacing: 0.06em;
-    }
+    .stat-label { font-size: 0.75rem; color: var(--ink-light); }
 
     /* ── Experience ── */
-    .exp-list { display: flex; flex-direction: column; gap: 0; }
+    .exp-list { display: flex; flex-direction: column; }
     .exp-item {
-      display: grid; grid-template-columns: 200px 1fr; gap: 3rem;
-      padding: 2.5rem 0; border-bottom: 1px solid var(--border);
+      display: grid; grid-template-columns: 170px 1fr; gap: 2.5rem;
+      padding: 2rem 0; border-bottom: 1px solid var(--border);
     }
     .exp-item:first-child { padding-top: 0; }
-    .exp-dates {
-      font-family: var(--mono); font-size: 0.8rem; color: var(--ink-muted);
-      padding-top: 0.15rem;
+    .exp-item:last-child { border-bottom: none; }
+    .exp-when { font-size: 0.85rem; color: var(--ink-light); }
+    .exp-badge {
+      display: inline-block; font-size: 0.65rem; font-weight: 700;
+      color: #15803D; background: #DCFCE7;
+      padding: 0.15rem 0.5rem; border-radius: 4px;
+      margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.03em;
     }
-    .exp-current {
-      display: inline-block; font-size: 0.65rem; font-weight: 600;
-      color: #15803d; background: #dcfce7; padding: 0.15rem 0.5rem;
-      border-radius: 3px; margin-top: 0.35rem; text-transform: uppercase;
-      letter-spacing: 0.06em;
+    .exp-role {
+      font-family: var(--heading); font-weight: 700; font-size: 1.05rem;
+      color: var(--ink); margin-bottom: 0.15rem;
     }
-    .exp-role { font-size: 1.15rem; font-weight: 700; color: var(--ink); margin-bottom: 0.15rem; }
-    .exp-company { font-size: 0.95rem; color: var(--accent); font-weight: 500; margin-bottom: 1rem; }
-    .exp-bullets { display: flex; flex-direction: column; gap: 0.5rem; }
+    .exp-company { font-size: 0.9rem; color: var(--accent); font-weight: 500; margin-bottom: 0.7rem; }
+    .exp-bullets { display: flex; flex-direction: column; gap: 0.4rem; }
     .exp-bullets li {
-      font-size: 0.9rem; color: var(--ink-light); line-height: 1.6;
-      padding-left: 1.25rem; position: relative;
+      font-size: 0.88rem; color: var(--ink-mid); line-height: 1.6;
+      padding-left: 1rem; position: relative;
     }
     .exp-bullets li::before {
-      content: '—'; position: absolute; left: 0; color: var(--ink-muted); font-size: 0.8rem;
+      content: ''; position: absolute; left: 0; top: 0.55rem;
+      width: 4px; height: 4px; background: var(--border); border-radius: 50%;
     }
-    .exp-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+    .exp-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.75rem; }
     .tag {
-      font-family: var(--mono); font-size: 0.65rem; color: var(--ink-muted);
-      background: var(--bg-alt); padding: 0.25rem 0.6rem; border-radius: 3px;
-      letter-spacing: 0.02em; border: 1px solid var(--border);
+      font-family: var(--mono); font-size: 0.68rem; color: var(--ink-light);
+      background: var(--bg-muted); padding: 0.2rem 0.55rem; border-radius: 4px;
     }
 
     /* ── Projects ── */
-    .project-featured {
-      background: var(--dark); border-radius: 16px; overflow: hidden;
-      display: grid; grid-template-columns: 1fr 1fr; min-height: 520px;
+    .project-main {
+      background: var(--dark); border-radius: var(--radius); overflow: hidden;
+      display: grid; grid-template-columns: 1fr 1fr;
     }
-    .project-featured-left {
-      padding: 3.5rem; display: flex; flex-direction: column; justify-content: center;
+    .pm-left {
+      padding: 2.75rem; display: flex; flex-direction: column; justify-content: center;
     }
-    .project-featured-right {
-      background: var(--dark-mid); padding: 3.5rem;
+    .pm-label {
+      font-family: var(--mono); font-size: 0.72rem; color: var(--accent-light);
+      text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.75rem;
+    }
+    .pm-title {
+      font-family: var(--heading); font-weight: 800; font-size: 1.65rem;
+      color: #fff; line-height: 1.2; margin-bottom: 0.75rem; letter-spacing: -0.02em;
+    }
+    .pm-desc {
+      font-size: 0.88rem; color: #94A3B8; line-height: 1.7; margin-bottom: 1.75rem;
+    }
+    .pm-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .pm-stat-val {
+      font-family: var(--heading); font-weight: 800; font-size: 1.35rem; color: #fff;
+    }
+    .pm-stat-label { font-size: 0.72rem; color: #64748B; margin-top: 0.1rem; line-height: 1.3; }
+
+    .pm-right {
+      background: var(--dark-card); padding: 2.75rem;
       display: flex; flex-direction: column; justify-content: center;
-      border-left: 1px solid #2a2a2a;
+      border-left: 1px solid #334155;
     }
-    .project-eyebrow {
-      font-family: var(--mono); font-size: 0.7rem; color: var(--accent-light);
-      text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1rem;
+    .pm-features { display: flex; flex-direction: column; gap: 1.25rem; }
+    .pm-feat-name {
+      font-family: var(--heading); font-weight: 600; font-size: 0.88rem;
+      color: #E2E8F0; margin-bottom: 0.1rem;
     }
-    .project-name {
-      font-family: var(--serif); font-size: 2rem; color: #fff;
-      line-height: 1.2; margin-bottom: 1rem;
+    .pm-feat-desc { font-size: 0.78rem; color: #64748B; line-height: 1.5; }
+    .pm-tech {
+      display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 2rem;
     }
-    .project-desc {
-      font-size: 0.95rem; color: #999; line-height: 1.7; margin-bottom: 2rem;
-    }
-    .project-stats {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
-    }
-    .project-stat-num {
-      font-family: var(--mono); font-size: 1.6rem; font-weight: 700; color: #fff;
-    }
-    .project-stat-label { font-size: 0.75rem; color: #666; margin-top: 0.15rem; line-height: 1.4; }
-    .project-features { display: flex; flex-direction: column; gap: 1.5rem; }
-    .project-feature { display: flex; gap: 1rem; align-items: flex-start; }
-    .feature-marker {
-      width: 24px; height: 24px; border: 1.5px solid #333; border-radius: 4px;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--mono); font-size: 0.6rem; color: var(--accent-light);
-      flex-shrink: 0; margin-top: 0.1rem;
-    }
-    .feature-text-title { font-size: 0.85rem; font-weight: 600; color: #ddd; }
-    .feature-text-desc { font-size: 0.8rem; color: #777; line-height: 1.5; margin-top: 0.15rem; }
-    .project-tech {
-      display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 2.5rem;
-    }
-    .project-tech span {
-      font-family: var(--mono); font-size: 0.6rem; color: #666;
-      border: 1px solid #333; padding: 0.2rem 0.55rem; border-radius: 3px;
-      letter-spacing: 0.02em;
+    .pm-tech span {
+      font-family: var(--mono); font-size: 0.62rem; color: #64748B;
+      border: 1px solid #334155; padding: 0.18rem 0.5rem; border-radius: 4px;
     }
 
-    .projects-secondary {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem;
+    .projects-cards {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1.5rem;
     }
-    .project-card {
-      padding: 2rem; border: 1px solid var(--border); border-radius: 12px;
-      background: var(--card); transition: border-color 0.2s;
+    .pcard {
+      padding: 1.75rem; border: 1px solid var(--border); border-radius: var(--radius);
+      background: var(--card); transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .project-card:hover { border-color: var(--accent); }
-    .project-card-title {
-      font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.5rem;
+    .pcard:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 16px rgba(67,56,202,0.08);
     }
-    .project-card-desc { font-size: 0.85rem; color: var(--ink-light); line-height: 1.6; margin-bottom: 1rem; }
-    .project-card .exp-tags { margin-top: 0; }
+    .pcard-title {
+      font-family: var(--heading); font-weight: 700; font-size: 1rem;
+      color: var(--ink); margin-bottom: 0.4rem;
+    }
+    .pcard-desc { font-size: 0.85rem; color: var(--ink-light); line-height: 1.6; margin-bottom: 0.75rem; }
 
     /* ── Skills ── */
     .skills-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
-      border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
-      background: var(--card);
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
     }
-    .skill-cell {
-      padding: 2rem; border-right: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+    .skill-card {
+      padding: 1.5rem; background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--radius); transition: border-color 0.2s;
     }
-    .skill-cell:nth-child(3n) { border-right: none; }
-    .skill-cell:nth-last-child(-n+3) { border-bottom: none; }
-    .skill-label {
-      font-family: var(--mono); font-size: 0.7rem; color: var(--accent);
-      text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;
+    .skill-card:hover { border-color: var(--accent); }
+    .skill-card-title {
+      font-family: var(--heading); font-weight: 700; font-size: 0.82rem;
+      color: var(--accent); text-transform: uppercase; letter-spacing: 0.03em;
+      margin-bottom: 0.75rem;
     }
-    .skill-items { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-    .skill-items span {
-      font-size: 0.82rem; color: var(--ink-light);
-      background: var(--bg-alt); padding: 0.3rem 0.7rem; border-radius: 4px;
-    }
+    .skill-card ul { display: flex; flex-direction: column; gap: 0.25rem; }
+    .skill-card li { font-size: 0.85rem; color: var(--ink-mid); }
 
     /* ── Education ── */
-    .edu-list { display: flex; flex-direction: column; gap: 0; }
+    .edu-list { display: flex; flex-direction: column; }
     .edu-item {
-      display: grid; grid-template-columns: 200px 1fr; gap: 3rem;
-      padding: 1.5rem 0; border-bottom: 1px solid var(--border);
+      display: grid; grid-template-columns: 150px 1fr; gap: 2.5rem;
+      padding: 1.25rem 0; border-bottom: 1px solid var(--border);
     }
     .edu-item:last-child { border-bottom: none; }
-    .edu-year {
-      font-family: var(--mono); font-size: 0.8rem; color: var(--ink-muted);
+    .edu-year { font-size: 0.85rem; color: var(--ink-light); }
+    .edu-degree {
+      font-family: var(--heading); font-weight: 600; font-size: 0.95rem;
+      color: var(--ink);
     }
-    .edu-degree { font-weight: 700; color: var(--ink); margin-bottom: 0.15rem; }
-    .edu-school { font-size: 0.9rem; color: var(--ink-light); }
-    .edu-note {
-      font-size: 0.8rem; color: var(--ink-muted); font-style: italic; margin-top: 0.35rem;
-    }
-    .badge-progress {
-      display: inline-block; font-family: var(--mono); font-size: 0.6rem;
-      font-weight: 600; color: var(--accent);
-      border: 1px solid var(--accent); padding: 0.1rem 0.45rem;
-      border-radius: 3px; margin-left: 0.5rem; text-transform: uppercase;
-      letter-spacing: 0.04em; vertical-align: middle;
+    .edu-school { font-size: 0.85rem; color: var(--ink-light); }
+    .edu-note { font-size: 0.82rem; color: var(--ink-muted); font-style: italic; margin-top: 0.2rem; }
+    .badge-wip {
+      display: inline-block; font-size: 0.6rem; font-weight: 700;
+      color: var(--accent); background: var(--accent-bg);
+      padding: 0.12rem 0.45rem; border-radius: 4px;
+      margin-left: 0.4rem; text-transform: uppercase; vertical-align: middle;
     }
 
     /* ── Contact ── */
-    .contact-section {
-      padding: 6rem 0; background: var(--dark); color: #fff;
-    }
+    .contact-section { padding: 5rem 0; background: var(--dark); color: #fff; }
     .contact-grid {
       display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
     }
-    .contact-title {
-      font-family: var(--serif); font-size: 2.8rem; line-height: 1.15;
-      letter-spacing: -0.02em;
+    .contact-heading {
+      font-family: var(--heading); font-weight: 800; font-size: 2.5rem;
+      line-height: 1.12; letter-spacing: -0.03em;
     }
-    .contact-title em { font-style: italic; color: var(--accent-light); }
-    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-sub {
+      font-size: 0.88rem; color: #64748B; margin-top: 0.75rem; line-height: 1.6;
+    }
+    .contact-links { display: flex; flex-direction: column; gap: 0.6rem; }
     .contact-link {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 1.25rem 1.5rem; border: 1px solid #333; border-radius: 8px;
+      padding: 1rem 1.25rem; border: 1px solid #334155; border-radius: 10px;
       transition: border-color 0.2s, background 0.2s;
-      font-size: 0.9rem; font-weight: 500;
+      font-size: 0.9rem; font-weight: 500; color: #CBD5E1;
     }
-    .contact-link:hover { border-color: var(--accent-light); background: rgba(255,255,255,0.03); }
-    .contact-link .arrow { color: #555; transition: color 0.2s, transform 0.2s; }
-    .contact-link:hover .arrow { color: var(--accent-light); transform: translateX(4px); }
-    .contact-meta {
-      font-family: var(--mono); font-size: 0.75rem; color: #555;
-      margin-top: 2rem; line-height: 1.8;
+    .contact-link:hover {
+      border-color: var(--accent-light); background: rgba(255,255,255,0.03);
     }
+    .contact-link .arr {
+      color: #475569; transition: color 0.2s, transform 0.2s;
+    }
+    .contact-link:hover .arr { color: var(--accent-light); transform: translateX(3px); }
 
-    /* ── Footer ── */
     .footer {
-      padding: 1.5rem 0; background: var(--dark); border-top: 1px solid #222;
+      padding: 1.25rem 0; background: var(--dark); border-top: 1px solid #1E293B;
       text-align: center;
     }
-    .footer p { font-size: 0.7rem; color: #444; font-family: var(--mono); }
+    .footer p { font-size: 0.72rem; color: #475569; }
 
     /* ── Responsive ── */
     @media (max-width: 900px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .hero { align-items: center; min-height: auto; padding: 8rem 0 4rem; }
-      .hero-title { font-size: 2.8rem; }
       .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .about-aside { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 2rem; }
       .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
-      .exp-dates { padding-bottom: 0.5rem; }
-      .project-featured { grid-template-columns: 1fr; }
-      .project-featured-right { border-left: none; border-top: 1px solid #2a2a2a; }
-      .projects-secondary { grid-template-columns: 1fr; }
+      .project-main { grid-template-columns: 1fr; }
+      .pm-right { border-left: none; border-top: 1px solid #334155; }
+      .projects-cards { grid-template-columns: 1fr; }
       .skills-grid { grid-template-columns: 1fr 1fr; }
-      .skill-cell:nth-child(2n) { border-right: none; }
-      .skill-cell:nth-child(3n) { border-right: 1px solid var(--border); }
       .edu-item { grid-template-columns: 1fr; gap: 0.25rem; }
       .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .contact-title { font-size: 2rem; }
+      .contact-heading { font-size: 2rem; }
       .nav-links { display: none; }
       .mobile-toggle { display: block; }
+      .nav-links.mobile-open {
+        display: flex; flex-direction: column; position: absolute;
+        top: 100%; left: 0; right: 0; background: var(--bg);
+        padding: 1.5rem 2rem; border-bottom: 1px solid var(--border);
+        gap: 1rem;
+      }
+      .section-head { flex-direction: column; gap: 0.25rem; }
     }
     @media (max-width: 600px) {
       .skills-grid { grid-template-columns: 1fr; }
-      .skill-cell { border-right: none !important; }
-      .stats-row { grid-template-columns: 1fr 1fr; }
-      .project-stats { grid-template-columns: 1fr 1fr; }
-      .hero-title { font-size: 2.2rem; }
-      .section { padding: 4rem 0; }
-      .container { padding: 0 1.25rem; }
+      .hero h1 { font-size: 2.4rem; }
+      .section { padding: 3.5rem 0; }
+      .wrap { padding: 0 1.25rem; }
+      .pm-stats { grid-template-columns: 1fr 1fr; }
+      .hero-actions { flex-direction: column; }
+      .btn-primary, .btn-secondary { text-align: center; justify-content: center; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ══════════ NAV ══════════ -->
+  <!-- NAV -->
   <nav class="nav">
     <div class="nav-inner">
-      <a href="#" class="nav-logo">andr<em>&eacute;s</em></a>
+      <a href="#" class="nav-logo">Andr&eacute;s Restrepo</a>
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
-        <a href="#projects">Work</a>
-        <a href="#skills">Stack</a>
-        <a href="#contact" class="nav-cta">Let's talk</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#contact" class="nav-cta">Contact</a>
       </div>
       <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -408,40 +416,42 @@
     </div>
   </nav>
 
-  <!-- ══════════ HERO ══════════ -->
-  <section class="hero container" style="position: relative;">
-    <div class="hero-grid">
-      <div>
-        <h1 class="hero-title">
-          Building clarity<br/>from <em>data.</em>
-        </h1>
-      </div>
-      <div class="hero-right">
-        <p class="hero-intro">
-          I'm Andr&eacute;s Restrepo&thinsp;&mdash;&thinsp;a BI &amp; Data Analyst in Bogot&aacute; with 4+ years
-          turning messy datasets into metrics people trust, dashboards they actually use,
-          and predictions grounded in evidence.
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-inner">
+        <div class="hero-badge">
+          <span class="dot"></span> Open to new opportunities
+        </div>
+        <h1>Hi, I'm <span class="name">Andr&eacute;s<br/>Restrepo</span></h1>
+        <p class="hero-sub">
+          <strong>BI &amp; Data Analyst</strong> with 4+ years turning data into decisions
+          across LATAM e-commerce and digital marketing.
         </p>
-        <div class="hero-meta">
-          <span><span class="dot"></span> Open to opportunities</span>
-          <span>Currently at InfraCommerce &middot; LATAM e-commerce</span>
-          <span>M.Sc. Applied Analytics &middot; in progress</span>
+        <div class="hero-actions">
+          <a href="#projects" class="btn-primary">View Projects &rarr;</a>
+          <a href="#contact" class="btn-secondary">Get in Touch</a>
+        </div>
+        <div class="hero-chips">
+          <span class="hero-chip">SQL</span>
+          <span class="hero-chip">BigQuery</span>
+          <span class="hero-chip">Power BI</span>
+          <span class="hero-chip">Python</span>
+          <span class="hero-chip">FastAPI</span>
+          <span class="hero-chip">Docker</span>
+          <span class="hero-chip">GCP</span>
         </div>
       </div>
     </div>
-    <div class="hero-scroll">scroll &darr;</div>
   </section>
 
-  <!-- ══════════ ABOUT ══════════ -->
-  <section id="about" class="section" style="background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-num">01</span>
-        <h2 class="section-title">About</h2>
-        <span class="section-spacer"></span>
-        <span class="section-subtitle">Who I am</span>
+  <!-- ABOUT -->
+  <section id="about" class="section section-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>About</h2>
+        <p>Background &amp; focus areas</p>
       </div>
-
       <div class="about-grid">
         <div class="about-text">
           <p>
@@ -453,36 +463,33 @@
           <p>
             Before that I spent nearly three years in digital marketing analytics at
             <strong>IPG Mediabrands</strong>, where I learned to translate campaign data into
-            investment decisions&thinsp;&mdash;&thinsp;and, more importantly, to make stakeholders
-            care about the numbers.
+            investment decisions and to make stakeholders care about the numbers.
           </p>
           <p>
             I hold a degree in Business Administration from <strong>Universidad Nacional
             de Colombia</strong> and I'm currently finishing a <strong>Master's in Applied
             Analytics</strong> at Universidad de la Sabana, where my thesis project is a
-            full-stack ML platform for athlete coaching&thinsp;&mdash;&thinsp;from data ingestion to
-            predictive models to deployment.
+            full-stack ML platform for athlete coaching.
           </p>
         </div>
-
-        <div class="about-aside">
-          <div class="aside-block">
-            <div class="aside-label">Focus areas</div>
-            <ul class="aside-list">
+        <div class="about-side">
+          <div class="side-block">
+            <div class="side-title">Focus areas</div>
+            <ul class="side-list">
               <li>Advanced SQL on BigQuery at scale</li>
               <li>Power BI dashboards &amp; KPI consistency</li>
               <li>Data quality &amp; cross-source reconciliation</li>
-              <li>Business requirements &rarr; analytical solutions</li>
+              <li>Business requirements to analytical solutions</li>
               <li>Python for modeling &amp; automation</li>
             </ul>
           </div>
           <div class="stats-row">
-            <div class="stat-card">
-              <div class="stat-num">4+</div>
+            <div class="stat">
+              <div class="stat-val">4+</div>
               <div class="stat-label">Years in analytics</div>
             </div>
-            <div class="stat-card">
-              <div class="stat-num">C1</div>
+            <div class="stat">
+              <div class="stat-val">C1</div>
               <div class="stat-label">English level</div>
             </div>
           </div>
@@ -491,21 +498,18 @@
     </div>
   </section>
 
-  <!-- ══════════ EXPERIENCE ══════════ -->
+  <!-- EXPERIENCE -->
   <section id="experience" class="section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-num">02</span>
-        <h2 class="section-title">Experience</h2>
-        <span class="section-spacer"></span>
-        <span class="section-subtitle">Where I've worked</span>
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Experience</h2>
+        <p>Where I've worked</p>
       </div>
-
       <div class="exp-list">
         <div class="exp-item">
           <div>
-            <div class="exp-dates">May 2024 &mdash; Present</div>
-            <div class="exp-current">Current</div>
+            <div class="exp-when">May 2024 &mdash; Present</div>
+            <div class="exp-badge">Current</div>
           </div>
           <div>
             <div class="exp-role">Business Intelligence Analyst</div>
@@ -518,19 +522,16 @@
               <li>Manage analytical requirements in Jira with agile methodology, coordinating deliverables across teams and clients</li>
             </ul>
             <div class="exp-tags">
-              <span class="tag">BigQuery</span>
-              <span class="tag">SQL</span>
-              <span class="tag">Power BI</span>
-              <span class="tag">APIs</span>
-              <span class="tag">Data Quality</span>
-              <span class="tag">Jira</span>
+              <span class="tag">BigQuery</span><span class="tag">SQL</span>
+              <span class="tag">Power BI</span><span class="tag">APIs</span>
+              <span class="tag">Data Quality</span><span class="tag">Jira</span>
             </div>
           </div>
         </div>
 
         <div class="exp-item">
           <div>
-            <div class="exp-dates">Jun 2021 &mdash; Mar 2024</div>
+            <div class="exp-when">Jun 2021 &mdash; Mar 2024</div>
           </div>
           <div>
             <div class="exp-role">BI Analyst / Digital Analyst</div>
@@ -543,10 +544,8 @@
               <li>Prepared executive reporting to support digital media investment decisions</li>
             </ul>
             <div class="exp-tags">
-              <span class="tag">Dashboards</span>
-              <span class="tag">Digital Marketing</span>
-              <span class="tag">SQL</span>
-              <span class="tag">KPIs</span>
+              <span class="tag">Dashboards</span><span class="tag">Digital Marketing</span>
+              <span class="tag">SQL</span><span class="tag">KPIs</span>
               <span class="tag">Reporting</span>
             </div>
           </div>
@@ -555,80 +554,63 @@
     </div>
   </section>
 
-  <!-- ══════════ PROJECTS ══════════ -->
-  <section id="projects" class="section" style="background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-num">03</span>
-        <h2 class="section-title">Work</h2>
-        <span class="section-spacer"></span>
-        <span class="section-subtitle">Selected projects</span>
+  <!-- PROJECTS -->
+  <section id="projects" class="section section-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Projects</h2>
+        <p>Selected work</p>
       </div>
 
-      <!-- Featured project -->
-      <div class="project-featured">
-        <div class="project-featured-left">
-          <div class="project-eyebrow">Featured &mdash; Master's Thesis</div>
-          <div class="project-name">Running Coaching Analytics Platform</div>
-          <p class="project-desc">
+      <div class="project-main">
+        <div class="pm-left">
+          <div class="pm-label">Master's Thesis</div>
+          <div class="pm-title">Running Coaching Analytics Platform</div>
+          <p class="pm-desc">
             End-to-end ML platform for competitive runners. Ingests real training
             data from Strava, engineers load metrics, predicts race times across
             distances, and serves everything through a REST API with an interactive
             coaching dashboard.
           </p>
-          <div class="project-stats">
+          <div class="pm-stats">
             <div>
-              <div class="project-stat-num">103K+</div>
-              <div class="project-stat-label">Boston Marathon records for model calibration</div>
+              <div class="pm-stat-val">103K+</div>
+              <div class="pm-stat-label">Boston Marathon records for calibration</div>
             </div>
             <div>
-              <div class="project-stat-num">18+</div>
-              <div class="project-stat-label">REST API endpoints</div>
+              <div class="pm-stat-val">18+</div>
+              <div class="pm-stat-label">REST API endpoints</div>
             </div>
             <div>
-              <div class="project-stat-num">61</div>
-              <div class="project-stat-label">Automated tests</div>
+              <div class="pm-stat-val">61</div>
+              <div class="pm-stat-label">Automated tests</div>
             </div>
             <div>
-              <div class="project-stat-num">4,800+</div>
-              <div class="project-stat-label">Lines of Python</div>
+              <div class="pm-stat-val">4,800+</div>
+              <div class="pm-stat-label">Lines of Python</div>
             </div>
           </div>
         </div>
-
-        <div class="project-featured-right">
-          <div class="project-features">
-            <div class="project-feature">
-              <div class="feature-marker">01</div>
-              <div>
-                <div class="feature-text-title">4-Layer Prediction System</div>
-                <div class="feature-text-desc">Calibrated Riegel + demographic correction via Ridge regression on 429K+ global results</div>
-              </div>
+        <div class="pm-right">
+          <div class="pm-features">
+            <div>
+              <div class="pm-feat-name">4-Layer Prediction System</div>
+              <div class="pm-feat-desc">Calibrated Riegel + demographic correction via Ridge regression on 429K+ global results</div>
             </div>
-            <div class="project-feature">
-              <div class="feature-marker">02</div>
-              <div>
-                <div class="feature-text-title">Training Load Analytics</div>
-                <div class="feature-text-desc">CTL, ATL, ACWR feature engineering with EWMA methodology and risk zone classification</div>
-              </div>
+            <div>
+              <div class="pm-feat-name">Training Load Analytics</div>
+              <div class="pm-feat-desc">CTL, ATL, ACWR feature engineering with EWMA methodology and risk zone classification</div>
             </div>
-            <div class="project-feature">
-              <div class="feature-marker">03</div>
-              <div>
-                <div class="feature-text-title">Interactive Dashboard</div>
-                <div class="feature-text-desc">Load semaphore, KPI grid, trend charts, and personalized weekly training plan</div>
-              </div>
+            <div>
+              <div class="pm-feat-name">Interactive Dashboard</div>
+              <div class="pm-feat-desc">Load semaphore, KPI grid, trend charts, and personalized weekly training plan</div>
             </div>
-            <div class="project-feature">
-              <div class="feature-marker">04</div>
-              <div>
-                <div class="feature-text-title">Strava + CI/CD</div>
-                <div class="feature-text-desc">OAuth sync, GitHub Actions weekly automation, Docker containerized on Railway</div>
-              </div>
+            <div>
+              <div class="pm-feat-name">Strava + CI/CD</div>
+              <div class="pm-feat-desc">OAuth sync, GitHub Actions weekly automation, Docker containerized on Railway</div>
             </div>
           </div>
-
-          <div class="project-tech">
+          <div class="pm-tech">
             <span>Python</span><span>FastAPI</span><span>DuckDB</span><span>Pandas</span>
             <span>Alpine.js</span><span>Tailwind</span><span>Chart.js</span><span>Docker</span>
             <span>Railway</span><span>GitHub Actions</span><span>Supabase</span><span>Strava API</span>
@@ -636,23 +618,21 @@
         </div>
       </div>
 
-      <!-- Secondary projects -->
-      <div class="projects-secondary">
-        <div class="project-card">
-          <div class="project-card-title">E-Commerce BI Framework</div>
-          <p class="project-card-desc">
+      <div class="projects-cards">
+        <div class="pcard">
+          <div class="pcard-title">E-Commerce BI Framework</div>
+          <p class="pcard-desc">
             Regional reporting architecture for LATAM e-commerce. BigQuery pipelines,
-            Power BI dashboards, and a KPI consistency framework serving multiple clients
-            across countries.
+            Power BI dashboards, and a KPI consistency framework serving multiple clients.
           </p>
           <div class="exp-tags">
             <span class="tag">BigQuery</span><span class="tag">Power BI</span>
             <span class="tag">SQL</span><span class="tag">Data Quality</span>
           </div>
         </div>
-        <div class="project-card">
-          <div class="project-card-title">Digital Campaign Analytics</div>
-          <p class="project-card-desc">
+        <div class="pcard">
+          <div class="pcard-title">Digital Campaign Analytics</div>
+          <p class="pcard-desc">
             Cross-platform performance dashboards for digital marketing. Automated data
             extraction, KPI tracking, and executive reporting for media investment decisions.
           </p>
@@ -665,81 +645,83 @@
     </div>
   </section>
 
-  <!-- ══════════ SKILLS ══════════ -->
+  <!-- SKILLS -->
   <section id="skills" class="section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-num">04</span>
-        <h2 class="section-title">Stack</h2>
-        <span class="section-spacer"></span>
-        <span class="section-subtitle">Tools &amp; skills</span>
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Skills &amp; Tools</h2>
+        <p>What I work with</p>
       </div>
-
       <div class="skills-grid">
-        <div class="skill-cell">
-          <div class="skill-label">Data &amp; Analysis</div>
-          <div class="skill-items">
-            <span>SQL</span><span>BigQuery</span><span>PostgreSQL</span>
-            <span>MySQL</span><span>DuckDB</span><span>Statistics</span>
-            <span>KPI Design</span><span>Data Quality</span>
-          </div>
+        <div class="skill-card">
+          <div class="skill-card-title">Data &amp; Analysis</div>
+          <ul>
+            <li>SQL &middot; BigQuery &middot; PostgreSQL</li>
+            <li>MySQL &middot; DuckDB</li>
+            <li>Applied Statistics</li>
+            <li>KPI Design &middot; Data Quality</li>
+          </ul>
         </div>
-        <div class="skill-cell">
-          <div class="skill-label">Visualization &amp; BI</div>
-          <div class="skill-items">
-            <span>Power BI</span><span>DAX</span><span>Power Query</span>
-            <span>Looker Studio</span><span>Chart.js</span><span>Reporting</span>
-          </div>
+        <div class="skill-card">
+          <div class="skill-card-title">Visualization</div>
+          <ul>
+            <li>Power BI &middot; DAX &middot; Power Query</li>
+            <li>Looker Studio</li>
+            <li>Chart.js</li>
+            <li>Executive Reporting</li>
+          </ul>
         </div>
-        <div class="skill-cell">
-          <div class="skill-label">Programming</div>
-          <div class="skill-items">
-            <span>Python</span><span>Pandas</span><span>FastAPI</span>
-            <span>REST APIs</span><span>ETL Pipelines</span>
-          </div>
+        <div class="skill-card">
+          <div class="skill-card-title">Programming</div>
+          <ul>
+            <li>Python &middot; Pandas</li>
+            <li>FastAPI &middot; REST APIs</li>
+            <li>ETL Pipelines</li>
+          </ul>
         </div>
-        <div class="skill-cell">
-          <div class="skill-label">Cloud &amp; Infra</div>
-          <div class="skill-items">
-            <span>Google Cloud</span><span>BigQuery</span><span>Supabase</span>
-            <span>Railway</span><span>Docker</span>
-          </div>
+        <div class="skill-card">
+          <div class="skill-card-title">Cloud &amp; Infra</div>
+          <ul>
+            <li>Google Cloud &middot; BigQuery</li>
+            <li>Supabase &middot; Railway</li>
+            <li>Docker</li>
+          </ul>
         </div>
-        <div class="skill-cell">
-          <div class="skill-label">ML &amp; Analytics</div>
-          <div class="skill-items">
-            <span>Predictive Modeling</span><span>Feature Engineering</span>
-            <span>Regression</span><span>Time Series</span><span>EDA</span>
-          </div>
+        <div class="skill-card">
+          <div class="skill-card-title">ML &amp; Analytics</div>
+          <ul>
+            <li>Predictive Modeling</li>
+            <li>Feature Engineering</li>
+            <li>Regression &middot; Time Series</li>
+            <li>EDA</li>
+          </ul>
         </div>
-        <div class="skill-cell">
-          <div class="skill-label">DevOps &amp; Process</div>
-          <div class="skill-items">
-            <span>Git</span><span>GitHub Actions</span><span>CI/CD</span>
-            <span>Jira / Agile</span><span>Documentation</span>
-          </div>
+        <div class="skill-card">
+          <div class="skill-card-title">DevOps &amp; Process</div>
+          <ul>
+            <li>Git &middot; GitHub Actions &middot; CI/CD</li>
+            <li>Jira &middot; Agile</li>
+            <li>Documentation</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══════════ EDUCATION ══════════ -->
-  <section class="section" id="education" style="background: var(--card); border-top: 1px solid var(--border);">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-num">05</span>
-        <h2 class="section-title">Education</h2>
-        <span class="section-spacer"></span>
-        <span class="section-subtitle">Academic background</span>
+  <!-- EDUCATION -->
+  <section id="education" class="section section-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Education</h2>
+        <p>Academic background</p>
       </div>
-
       <div class="edu-list">
         <div class="edu-item">
           <div class="edu-year">2024 &mdash; Present</div>
           <div>
-            <div class="edu-degree">M.Sc. in Applied Analytics <span class="badge-progress">In progress</span></div>
+            <div class="edu-degree">M.Sc. in Applied Analytics <span class="badge-wip">In progress</span></div>
             <div class="edu-school">Universidad de la Sabana &middot; Ch&iacute;a, Colombia</div>
-            <div class="edu-note">Thesis: Running Coaching Analytics Platform &mdash; predictive modeling, feature engineering, API development, and deployment.</div>
+            <div class="edu-note">Thesis: Running Coaching Analytics Platform &mdash; predictive modeling, API development, and deployment.</div>
           </div>
         </div>
         <div class="edu-item">
@@ -760,15 +742,13 @@
     </div>
   </section>
 
-  <!-- ══════════ CONTACT ══════════ -->
+  <!-- CONTACT -->
   <section id="contact" class="contact-section">
-    <div class="container">
+    <div class="wrap">
       <div class="contact-grid">
         <div>
-          <div class="contact-title">
-            Let's build<br/>something <em>useful.</em>
-          </div>
-          <div class="contact-meta">
+          <div class="contact-heading">Let's work<br/>together.</div>
+          <div class="contact-sub">
             Bogot&aacute;, Colombia<br/>
             Available for BI, Data Analytics,<br/>
             and Applied Analytics roles.
@@ -778,15 +758,19 @@
           <div class="contact-links">
             <a href="mailto:andresfere25@gmail.com" class="contact-link">
               <span>andresfere25@gmail.com</span>
-              <span class="arrow">&rarr;</span>
+              <span class="arr">&rarr;</span>
             </a>
             <a href="https://www.linkedin.com/in/andres-felipe-restrepo-melo-cv/" target="_blank" class="contact-link">
               <span>LinkedIn</span>
-              <span class="arrow">&rarr;</span>
+              <span class="arr">&rarr;</span>
+            </a>
+            <a href="https://github.com/andresfere25" target="_blank" class="contact-link">
+              <span>GitHub</span>
+              <span class="arr">&rarr;</span>
             </a>
             <a href="tel:+573209464352" class="contact-link">
               <span>+57 320 946 4352</span>
-              <span class="arrow">&rarr;</span>
+              <span class="arr">&rarr;</span>
             </a>
           </div>
         </div>
@@ -794,9 +778,8 @@
     </div>
   </section>
 
-  <!-- ══════════ FOOTER ══════════ -->
   <footer class="footer">
-    <p>&copy; 2026 Andr&eacute;s Restrepo &middot; Bogot&aacute;, Colombia</p>
+    <p>&copy; 2026 Andr&eacute;s Restrepo Melo &middot; Bogot&aacute;, Colombia</p>
   </footer>
 
 </body>
