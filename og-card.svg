@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Andrés Restrepo</title>
+  <desc id="desc">Senior Business Intelligence and Advanced Analytics portfolio</desc>
+  <rect width="1200" height="630" fill="#f6f8fc"/>
+  <g fill="#dfe6f2" opacity=".72">
+    <circle cx="40" cy="40" r="2"/><circle cx="80" cy="40" r="2"/><circle cx="120" cy="40" r="2"/><circle cx="160" cy="40" r="2"/><circle cx="200" cy="40" r="2"/>
+    <circle cx="40" cy="80" r="2"/><circle cx="80" cy="80" r="2"/><circle cx="120" cy="80" r="2"/><circle cx="160" cy="80" r="2"/><circle cx="200" cy="80" r="2"/>
+  </g>
+  <rect x="74" y="70" width="62" height="62" rx="14" fill="#152033"/>
+  <text x="105" y="109" fill="#fbfcfe" font-family="monospace" font-size="22" font-weight="700" text-anchor="middle">AR</text>
+  <text x="74" y="270" fill="#152033" font-family="Arial, sans-serif" font-size="76" font-weight="800" letter-spacing="-4">Andrés Restrepo</text>
+  <text x="74" y="338" fill="#2457e6" font-family="Arial, sans-serif" font-size="36" font-weight="700">Business Intelligence + Advanced Analytics</text>
+  <text x="74" y="400" fill="#46536a" font-family="Arial, sans-serif" font-size="26">Data platforms, BI, and applied machine learning.</text>
+  <g transform="translate(780 138)">
+    <path d="M10 86C105 86 100 178 196 178s96-92 196-92M10 270c95 0 90-92 186-92s96 92 196 92" fill="none" stroke="#2457e6" stroke-width="5" stroke-dasharray="12 12"/>
+    <rect width="116" height="58" y="58" rx="10" fill="#fbfcfe" stroke="#cbd6e7" stroke-width="2"/>
+    <rect width="116" height="58" y="242" rx="10" fill="#fbfcfe" stroke="#cbd6e7" stroke-width="2"/>
+    <rect x="142" y="149" width="116" height="58" rx="10" fill="#2457e6"/>
+    <rect x="330" y="58" width="116" height="58" rx="10" fill="#fbfcfe" stroke="#cbd6e7" stroke-width="2"/>
+    <rect x="330" y="242" width="116" height="58" rx="10" fill="#fbfcfe" stroke="#cbd6e7" stroke-width="2"/>
+  </g>
+  <text x="74" y="560" fill="#6d788c" font-family="monospace" font-size="18">BOGOTÁ / COLOMBIA / PORTFOLIO 2026</text>
+</svg>

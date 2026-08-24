@@ -1,786 +1,882 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Andrés Restrepo — BI & Data Analytics</title>
-  <meta name="description" content="Business Intelligence & Data Analytics professional based in Bogotá, Colombia." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Andrés Restrepo | Business Intelligence y Analítica Avanzada</title>
+  <meta name="description" content="Portafolio bilingüe de Andrés Restrepo, especialista senior en Business Intelligence, analítica avanzada y machine learning aplicado.">
+  <meta name="theme-color" content="#f6f8fc">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://portfolio-3zv.pages.dev/">
+  <meta property="og:title" content="Andrés Restrepo | Business Intelligence y Analítica Avanzada">
+  <meta property="og:description" content="Business Intelligence, plataformas de datos y machine learning aplicado para convertir información en decisiones.">
+  <meta property="og:image" content="https://portfolio-3zv.pages.dev/og-card.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://portfolio-3zv.pages.dev/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js');</script>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
-
     :root {
-      --bg: #FFFFFF;
-      --bg-soft: #F8FAFC;
-      --bg-muted: #F1F5F9;
-      --ink: #0F172A;
-      --ink-mid: #334155;
-      --ink-light: #64748B;
-      --ink-muted: #94A3B8;
-      --accent: #4338CA;
-      --accent-hover: #3730A3;
-      --accent-light: #6366F1;
-      --accent-bg: #EEF2FF;
-      --border: #E2E8F0;
-      --card: #FFFFFF;
-      --dark: #0F172A;
-      --dark-card: #1E293B;
-      --heading: 'Plus Jakarta Sans', system-ui, sans-serif;
-      --body: 'Inter', system-ui, sans-serif;
-      --mono: 'IBM Plex Mono', 'Consolas', monospace;
-      --radius: 12px;
+      --paper: oklch(98% 0.008 260);
+      --clear: oklch(99% 0.004 260);
+      --quiet: oklch(94% 0.018 260);
+      --line: oklch(87% 0.025 260);
+      --ink: oklch(27% 0.035 260);
+      --copy: oklch(43% 0.04 260);
+      --muted: oklch(59% 0.035 260);
+      --blue: oklch(55% 0.22 264);
+      --blue-deep: oklch(42% 0.18 264);
+      --blue-soft: oklch(94% 0.035 264);
+      --success: oklch(52% 0.12 164);
+      --font: "Manrope", Arial, sans-serif;
+      --mono: "JetBrains Mono", Consolas, monospace;
+      --ease: cubic-bezier(.16, 1, .3, 1);
+      --container: 76rem;
+      --nav-height: 4.5rem;
     }
 
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-height) + 1.5rem); }
     body {
-      font-family: var(--body);
-      background: var(--bg);
+      margin: 0;
+      background: var(--paper);
       color: var(--ink);
+      font-family: var(--font);
+      font-size: 1rem;
+      line-height: 1.7;
+      text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
-      line-height: 1.6;
     }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      opacity: .42;
+      background-image: radial-gradient(circle at 1px 1px, oklch(63% .025 260 / .22) 1px, transparent 0);
+      background-size: 26px 26px;
+      mask-image: linear-gradient(to bottom, black, transparent 38%);
+    }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
+    img, svg { display: block; max-width: 100%; }
+    [hidden] { display: none !important; }
+    ::selection { background: var(--blue); color: var(--clear); }
 
-    a { color: inherit; text-decoration: none; }
-    ul { list-style: none; }
+    .skip-link {
+      position: fixed;
+      top: .75rem;
+      left: .75rem;
+      z-index: 1000;
+      transform: translateY(-180%);
+      padding: .7rem 1rem;
+      border-radius: .5rem;
+      background: var(--ink);
+      color: var(--clear);
+      font-weight: 700;
+      transition: transform .2s var(--ease);
+    }
+    .skip-link:focus { transform: translateY(0); }
+    :focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
 
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .container { width: min(calc(100% - 2.5rem), var(--container)); margin-inline: auto; }
+    .section { padding-block: clamp(5rem, 9vw, 9rem); }
+    .section--quiet { background: color-mix(in oklch, var(--quiet) 62%, var(--paper)); }
+    .eyebrow {
+      margin: 0 0 .9rem;
+      color: var(--blue-deep);
+      font-family: var(--mono);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .045em;
+      text-transform: uppercase;
+    }
+    .section-title {
+      max-width: 15ch;
+      margin: 0;
+      font-size: clamp(2.15rem, 4.4vw, 4.35rem);
+      font-weight: 750;
+      letter-spacing: -.052em;
+      line-height: 1;
+      text-wrap: balance;
+    }
+    .section-intro {
+      max-width: 65ch;
+      margin: 1.4rem 0 0;
+      color: var(--copy);
+      font-size: clamp(1rem, 1.4vw, 1.15rem);
+      text-wrap: pretty;
+    }
+    .section-heading {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(18rem, .7fr);
+      gap: 3rem;
+      align-items: end;
+      margin-bottom: clamp(2.5rem, 5vw, 5rem);
+    }
+    .section-heading .section-intro { margin: 0; }
 
-    /* ── Nav ── */
-    .nav {
-      position: fixed; top: 0; width: 100%; z-index: 100;
-      background: rgba(255,255,255,0.88);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(226,232,240,0.6);
+    .site-nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      height: var(--nav-height);
+      border-bottom: 1px solid color-mix(in oklch, var(--line) 65%, transparent);
+      background: color-mix(in oklch, var(--paper) 90%, transparent);
+      backdrop-filter: blur(18px) saturate(1.15);
+      box-shadow: 0 12px 32px oklch(27% .035 260 / .035);
     }
     .nav-inner {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0.9rem 2rem; max-width: 1100px; margin: 0 auto;
+      display: flex;
+      height: 100%;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
     }
-    .nav-logo {
-      font-family: var(--heading); font-weight: 800; font-size: 1.25rem;
-      color: var(--ink); letter-spacing: -0.03em;
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .7rem;
+      color: var(--ink);
+      font-weight: 800;
+      letter-spacing: -.035em;
+      text-decoration: none;
     }
-    .nav-logo span { color: var(--accent); }
-    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .brand-mark {
+      display: grid;
+      width: 2rem;
+      height: 2rem;
+      place-items: center;
+      border-radius: .55rem;
+      background: var(--ink);
+      color: var(--clear);
+      font-family: var(--mono);
+      font-size: .7rem;
+      letter-spacing: -.08em;
+    }
+    .nav-links { display: flex; align-items: center; gap: clamp(.8rem, 2vw, 1.8rem); }
     .nav-links a {
-      font-family: var(--body); font-size: 0.88rem; font-weight: 500;
-      color: var(--ink-light); transition: color 0.2s;
+      position: relative;
+      color: var(--copy);
+      font-size: .82rem;
+      font-weight: 650;
+      text-decoration: none;
+      transition: color .2s var(--ease);
     }
-    .nav-links a:hover { color: var(--ink); }
-    .nav-cta {
-      font-size: 0.85rem !important; font-weight: 600 !important;
-      color: #fff !important; background: var(--accent);
-      padding: 0.5rem 1.25rem; border-radius: 8px;
-      transition: background 0.2s;
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 -.45rem;
+      height: 2px;
+      border-radius: 1px;
+      background: var(--blue);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .25s var(--ease);
     }
-    .nav-cta:hover { background: var(--accent-hover); }
-    .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
-    .mobile-toggle span {
-      display: block; width: 20px; height: 2px; background: var(--ink);
-      margin: 4px 0; border-radius: 2px; transition: 0.3s;
+    .nav-links a:hover, .nav-links a[aria-current="true"] { color: var(--ink); }
+    .nav-links a[aria-current="true"]::after { transform: scaleX(1); }
+    .nav-actions { display: flex; align-items: center; gap: .6rem; }
+    .lang-switch {
+      display: inline-flex;
+      padding: 3px;
+      border: 1px solid var(--line);
+      border-radius: .65rem;
+      background: var(--quiet);
     }
-
-    /* ── Hero ── */
-    .hero {
-      min-height: 100vh; display: flex; align-items: center;
-      padding-top: 5rem;
-      background: linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 100%);
+    .lang-switch button {
+      min-width: 2.35rem;
+      border: 0;
+      border-radius: .45rem;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-family: var(--mono);
+      font-size: .68rem;
+      font-weight: 600;
+      padding: .42rem .55rem;
+      transition: background .2s, color .2s, transform .2s var(--ease);
     }
-    .hero-inner { max-width: 700px; }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      font-family: var(--body); font-size: 0.85rem; font-weight: 500;
-      color: var(--accent); background: var(--accent-bg);
-      padding: 0.4rem 1rem; border-radius: 100px;
-      margin-bottom: 2rem;
-    }
-    .hero-badge .dot {
-      width: 8px; height: 8px; background: #22C55E; border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
-
-    .hero h1 {
-      font-family: var(--heading); font-weight: 800;
-      font-size: clamp(2.8rem, 5.5vw, 4.5rem);
-      line-height: 1.08; letter-spacing: -0.04em;
-      color: var(--ink); margin-bottom: 1.25rem;
-    }
-    .hero h1 .name { color: var(--accent); }
-
-    .hero-sub {
-      font-size: 1.2rem; color: var(--ink-light); line-height: 1.6;
-      margin-bottom: 2rem; max-width: 540px;
-    }
-    .hero-sub strong { color: var(--ink-mid); font-weight: 600; }
-
-    .hero-actions { display: flex; gap: 0.75rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      font-family: var(--body); font-size: 0.92rem; font-weight: 600;
-      color: #fff; background: var(--accent);
-      padding: 0.75rem 1.5rem; border-radius: 10px;
-      transition: background 0.2s, transform 0.15s;
-      border: none; cursor: pointer;
-    }
-    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
-    .btn-secondary {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      font-family: var(--body); font-size: 0.92rem; font-weight: 600;
-      color: var(--ink-mid); background: var(--bg);
-      padding: 0.75rem 1.5rem; border-radius: 10px;
-      border: 1.5px solid var(--border);
-      transition: border-color 0.2s, color 0.2s;
+    .lang-switch button[aria-pressed="true"] { background: var(--clear); color: var(--blue-deep); }
+    .lang-switch button:active { transform: scale(.97); }
+    .menu-button {
+      display: none;
+      width: 2.6rem;
+      height: 2.6rem;
+      border: 1px solid var(--line);
+      border-radius: .65rem;
+      background: var(--clear);
+      color: var(--ink);
       cursor: pointer;
     }
-    .btn-secondary:hover { border-color: var(--ink-mid); color: var(--ink); }
+    .menu-button svg { width: 1.2rem; margin: auto; }
 
-    .hero-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-    .hero-chip {
-      font-family: var(--mono); font-size: 0.78rem; font-weight: 400;
-      color: var(--ink-light); padding: 0.3rem 0.75rem;
-      border: 1px solid var(--border); border-radius: 6px;
-      background: var(--bg);
+    .hero {
+      position: relative;
+      display: grid;
+      min-height: min(58rem, 100dvh);
+      align-items: center;
+      overflow: clip;
+      padding: calc(var(--nav-height) + 4rem) 0 clamp(4rem, 8vw, 7rem);
     }
-
-    /* ── Sections ── */
-    .section { padding: 5rem 0; }
-    .section-alt { background: var(--bg-soft); }
-
-    .section-head {
-      display: flex; align-items: baseline; justify-content: space-between;
-      margin-bottom: 2.5rem; padding-bottom: 1rem;
-      border-bottom: 1px solid var(--border);
+    .hero::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: min(50vw, 48rem);
+      aspect-ratio: 1;
+      top: 8%;
+      right: -16%;
+      border-radius: 50%;
+      background: radial-gradient(circle, oklch(69% .16 264 / .16), transparent 67%);
+      filter: blur(8px);
     }
-    .section-head h2 {
-      font-family: var(--heading); font-weight: 700; font-size: 1.65rem;
-      letter-spacing: -0.02em; color: var(--ink);
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(22rem, .92fr);
+      gap: clamp(3rem, 7vw, 7rem);
+      align-items: center;
     }
-    .section-head p {
-      font-size: 0.85rem; color: var(--ink-muted); font-weight: 500;
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      margin-bottom: 1.8rem;
+      color: var(--copy);
+      font-family: var(--mono);
+      font-size: .72rem;
+      font-weight: 600;
     }
-
-    /* ── About ── */
-    .about-grid {
-      display: grid; grid-template-columns: 5fr 3fr; gap: 4rem;
+    .status-dot { width: .6rem; height: .6rem; border-radius: 50%; background: var(--success); box-shadow: 0 0 0 5px oklch(52% .12 164 / .12); }
+    .hero h1 {
+      max-width: 10ch;
+      margin: 0;
+      font-size: clamp(3.4rem, 7.7vw, 7.5rem);
+      font-weight: 780;
+      letter-spacing: -.067em;
+      line-height: .9;
+      text-wrap: balance;
     }
-    .about-text { font-size: 0.95rem; color: var(--ink-mid); line-height: 1.8; }
-    .about-text p + p { margin-top: 1rem; }
-    .about-text strong { color: var(--ink); font-weight: 600; }
-
-    .about-side {}
-    .side-block + .side-block { margin-top: 1.75rem; }
-    .side-title {
-      font-family: var(--heading); font-weight: 700; font-size: 0.8rem;
-      text-transform: uppercase; letter-spacing: 0.04em;
-      color: var(--ink); margin-bottom: 0.5rem;
-    }
-    .side-list { display: flex; flex-direction: column; gap: 0.3rem; }
-    .side-list li {
-      font-size: 0.88rem; color: var(--ink-mid);
-      padding-left: 0.85rem; position: relative;
-    }
-    .side-list li::before {
-      content: ''; position: absolute; left: 0; top: 0.55rem;
-      width: 4px; height: 4px; background: var(--accent); border-radius: 50%;
-    }
-    .stats-row {
-      display: flex; gap: 1.5rem; margin-top: 1.5rem;
-      padding-top: 1.25rem; border-top: 1px solid var(--border);
-    }
-    .stat {}
-    .stat-val {
-      font-family: var(--heading); font-weight: 800; font-size: 1.5rem;
+    .hero h1 span { color: var(--blue); }
+    .hero-role {
+      max-width: 32ch;
+      margin: 1.7rem 0 0;
       color: var(--ink);
+      font-size: clamp(1.25rem, 2.2vw, 1.9rem);
+      font-weight: 650;
+      letter-spacing: -.035em;
+      line-height: 1.2;
+      text-wrap: balance;
     }
-    .stat-label { font-size: 0.75rem; color: var(--ink-light); }
+    .hero-copy {
+      max-width: 64ch;
+      margin: 1.2rem 0 0;
+      color: var(--copy);
+      font-size: 1.03rem;
+      text-wrap: pretty;
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2.1rem; }
+    .button {
+      display: inline-flex;
+      min-height: 3rem;
+      align-items: center;
+      justify-content: center;
+      gap: .65rem;
+      border: 1px solid transparent;
+      border-radius: .65rem;
+      padding: .7rem 1rem;
+      font-size: .86rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform .22s var(--ease), background .22s, border-color .22s, box-shadow .22s;
+    }
+    .button svg { width: 1rem; }
+    .button--primary { background: var(--blue); color: var(--clear); }
+    .button--primary:hover { background: var(--blue-deep); transform: translateY(-2px); box-shadow: 0 16px 34px oklch(55% .22 264 / .16); }
+    .button--secondary { border-color: var(--line); background: var(--clear); color: var(--ink); }
+    .button--secondary:hover { border-color: var(--blue); transform: translateY(-2px); }
 
-    /* ── Experience ── */
-    .exp-list { display: flex; flex-direction: column; }
-    .exp-item {
-      display: grid; grid-template-columns: 170px 1fr; gap: 2.5rem;
-      padding: 2rem 0; border-bottom: 1px solid var(--border);
+    .system-figure {
+      position: relative;
+      isolation: isolate;
+      border: 1px solid var(--line);
+      border-radius: 1.1rem;
+      background: color-mix(in oklch, var(--clear) 85%, transparent);
+      box-shadow: 0 34px 80px oklch(27% .035 260 / .1);
+      overflow: hidden;
     }
-    .exp-item:first-child { padding-top: 0; }
-    .exp-item:last-child { border-bottom: none; }
-    .exp-when { font-size: 0.85rem; color: var(--ink-light); }
-    .exp-badge {
-      display: inline-block; font-size: 0.65rem; font-weight: 700;
-      color: #15803D; background: #DCFCE7;
-      padding: 0.15rem 0.5rem; border-radius: 4px;
-      margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.03em;
+    .system-figure::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(120deg, transparent 55%, oklch(55% .22 264 / .055));
     }
-    .exp-role {
-      font-family: var(--heading); font-weight: 700; font-size: 1.05rem;
-      color: var(--ink); margin-bottom: 0.15rem;
+    .figure-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.1rem;
+      border-bottom: 1px solid var(--line);
+      color: var(--copy);
+      font-family: var(--mono);
+      font-size: .65rem;
+      letter-spacing: .04em;
     }
-    .exp-company { font-size: 0.9rem; color: var(--accent); font-weight: 500; margin-bottom: 0.7rem; }
-    .exp-bullets { display: flex; flex-direction: column; gap: 0.4rem; }
-    .exp-bullets li {
-      font-size: 0.88rem; color: var(--ink-mid); line-height: 1.6;
-      padding-left: 1rem; position: relative;
+    .figure-state { display: inline-flex; align-items: center; gap: .45rem; }
+    .figure-state::before { content: ""; width: .45rem; height: .45rem; border-radius: 50%; background: var(--success); }
+    .system-map { width: 100%; height: auto; }
+    .system-map .grid-line { stroke: var(--line); stroke-width: 1; opacity: .6; }
+    .system-map .flow-line { fill: none; stroke: var(--blue); stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 7 7; animation: signal 7s linear infinite; }
+    .system-map .node { fill: var(--clear); stroke: var(--line); stroke-width: 1.4; }
+    .system-map .node--active { fill: var(--blue); stroke: var(--blue); }
+    .system-map .label { fill: var(--muted); font: 600 10px var(--mono); letter-spacing: .06em; }
+    .system-map .value { fill: var(--ink); font: 700 14px var(--font); }
+    .system-map .value--light { fill: var(--clear); }
+    @keyframes signal { to { stroke-dashoffset: -140; } }
+    .figure-foot {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
     }
-    .exp-bullets li::before {
-      content: ''; position: absolute; left: 0; top: 0.55rem;
-      width: 4px; height: 4px; background: var(--border); border-radius: 50%;
+    .figure-foot div { padding: .9rem 1rem; border-right: 1px solid var(--line); }
+    .figure-foot div:last-child { border: 0; }
+    .figure-foot strong { display: block; color: var(--ink); font-size: .82rem; }
+    .figure-foot span { color: var(--muted); font-family: var(--mono); font-size: .6rem; }
+
+    .proof-bar { border-block: 1px solid var(--line); background: var(--clear); }
+    .proof-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .proof-item { padding: 1.5rem clamp(1rem, 3vw, 2rem); border-right: 1px solid var(--line); }
+    .proof-item:last-child { border: 0; }
+    .proof-value { display: block; color: var(--blue-deep); font-family: var(--mono); font-size: clamp(1.2rem, 2.6vw, 2rem); font-weight: 600; font-variant-numeric: tabular-nums; }
+    .proof-label { display: block; max-width: 18ch; margin-top: .35rem; color: var(--copy); font-size: .78rem; line-height: 1.45; }
+
+    .profile-grid { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(20rem, .65fr); gap: clamp(3rem, 8vw, 8rem); }
+    .profile-copy { max-width: 68ch; color: var(--copy); font-size: clamp(1.05rem, 1.5vw, 1.22rem); }
+    .profile-copy p { margin: 0; }
+    .profile-copy p + p { margin-top: 1.3rem; }
+    .profile-copy strong { color: var(--ink); }
+    .scope-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+    .scope-list li { display: grid; grid-template-columns: 2rem 1fr; gap: .9rem; padding: 1rem 0; border-bottom: 1px solid var(--line); color: var(--copy); font-size: .9rem; }
+    .scope-list b { color: var(--blue-deep); font-family: var(--mono); font-size: .7rem; }
+
+    .timeline { border-top: 1px solid var(--line); }
+    .role {
+      display: grid;
+      grid-template-columns: minmax(10rem, .32fr) minmax(0, 1fr);
+      gap: clamp(2rem, 7vw, 6rem);
+      padding: clamp(2.5rem, 5vw, 4.7rem) 0;
+      border-bottom: 1px solid var(--line);
     }
-    .exp-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.75rem; }
-    .tag {
-      font-family: var(--mono); font-size: 0.68rem; color: var(--ink-light);
-      background: var(--bg-muted); padding: 0.2rem 0.55rem; border-radius: 4px;
+    .role-meta { position: relative; }
+    .role-period { display: block; color: var(--blue-deep); font-family: var(--mono); font-size: .78rem; font-weight: 600; }
+    .role-company { display: block; margin-top: .55rem; color: var(--ink); font-size: 1.06rem; font-weight: 750; }
+    .role-location { display: block; color: var(--muted); font-size: .78rem; }
+    .role-title { margin: 0; font-size: clamp(1.35rem, 2.4vw, 2rem); font-weight: 720; letter-spacing: -.035em; line-height: 1.2; }
+    .role-summary { max-width: 70ch; margin: .8rem 0 0; color: var(--copy); }
+    .role-points { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem 2.5rem; margin: 1.5rem 0 0; padding: 0; list-style: none; }
+    .role-points li { position: relative; padding-left: 1.1rem; color: var(--copy); font-size: .86rem; line-height: 1.55; }
+    .role-points li::before { content: ""; position: absolute; left: 0; top: .65em; width: .38rem; height: .38rem; border-radius: 1px; background: var(--blue); }
+    .tech-line { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.6rem; }
+    .tech-line span { border: 1px solid var(--line); border-radius: .35rem; background: var(--clear); padding: .28rem .5rem; color: var(--muted); font-family: var(--mono); font-size: .62rem; }
+
+    .case-study {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(21rem, .68fr);
+      gap: 0;
+      border: 1px solid var(--line);
+      border-radius: 1.1rem;
+      background: var(--clear);
+      overflow: hidden;
+    }
+    .case-main { padding: clamp(2rem, 5vw, 4rem); }
+    .case-label { color: var(--blue-deep); font-family: var(--mono); font-size: .68rem; font-weight: 600; letter-spacing: .045em; text-transform: uppercase; }
+    .case-title { max-width: 15ch; margin: .8rem 0 0; font-size: clamp(2.1rem, 4.2vw, 4.4rem); font-weight: 760; letter-spacing: -.055em; line-height: .98; }
+    .case-copy { max-width: 62ch; margin: 1.3rem 0 0; color: var(--copy); }
+    .case-metrics { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 2.4rem; border-block: 1px solid var(--line); }
+    .case-metric { padding: 1.15rem .8rem 1.15rem 0; }
+    .case-metric + .case-metric { padding-left: 1rem; border-left: 1px solid var(--line); }
+    .case-metric strong { display: block; color: var(--blue-deep); font-family: var(--mono); font-size: clamp(1.1rem, 2vw, 1.6rem); }
+    .case-metric span { display: block; margin-top: .25rem; color: var(--muted); font-size: .7rem; line-height: 1.35; }
+    .case-aside { display: flex; flex-direction: column; justify-content: space-between; padding: clamp(2rem, 4vw, 3rem); background: var(--ink); color: var(--clear); }
+    .case-aside h3 { margin: 0 0 1.4rem; color: var(--clear); font-size: 1rem; }
+    .architecture { margin: 0; padding: 0; list-style: none; counter-reset: layers; }
+    .architecture li { counter-increment: layers; display: grid; grid-template-columns: 2rem 1fr; gap: .8rem; padding: .9rem 0; border-top: 1px solid oklch(87% .025 260 / .18); color: oklch(87% .025 260); font-size: .82rem; }
+    .architecture li::before { content: "0" counter(layers); color: oklch(74% .12 264); font-family: var(--mono); font-size: .65rem; }
+    .case-stack { margin-top: 2rem; color: oklch(74% .03 260); font-family: var(--mono); font-size: .62rem; line-height: 1.8; }
+    .secondary-case {
+      display: grid;
+      grid-template-columns: minmax(0, .55fr) minmax(0, 1fr) auto;
+      gap: 2rem;
+      align-items: center;
+      margin-top: 1.2rem;
+      padding: clamp(1.5rem, 4vw, 2.5rem);
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      background: var(--clear);
+    }
+    .secondary-case h3 { margin: 0; font-size: clamp(1.2rem, 2.3vw, 1.75rem); letter-spacing: -.035em; line-height: 1.2; }
+    .secondary-case p { margin: 0; color: var(--copy); font-size: .9rem; }
+    .metric-token { color: var(--blue-deep); font-family: var(--mono); font-size: .75rem; font-weight: 600; white-space: nowrap; }
+
+    .capability-matrix { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+    .capability { min-height: 15rem; padding: clamp(1.5rem, 4vw, 3rem); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .capability-index { color: var(--blue-deep); font-family: var(--mono); font-size: .68rem; }
+    .capability h3 { margin: 1.3rem 0 .8rem; font-size: clamp(1.25rem, 2vw, 1.75rem); letter-spacing: -.035em; }
+    .capability p { max-width: 52ch; margin: 0; color: var(--copy); font-size: .9rem; }
+    .capability-tools { margin-top: 1.5rem; color: var(--muted); font-family: var(--mono); font-size: .65rem; line-height: 1.8; }
+
+    .education-list { border-top: 1px solid var(--line); }
+    .education-item { display: grid; grid-template-columns: 8rem minmax(0, 1fr) auto; gap: 2rem; align-items: start; padding: 1.6rem 0; border-bottom: 1px solid var(--line); }
+    .education-year { color: var(--blue-deep); font-family: var(--mono); font-size: .75rem; font-weight: 600; }
+    .education-degree { color: var(--ink); font-size: 1.08rem; font-weight: 720; }
+    .education-school, .education-place { color: var(--copy); font-size: .82rem; }
+
+    .contact { background: var(--ink); color: var(--clear); }
+    .contact-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(19rem, .62fr); gap: clamp(3rem, 8vw, 8rem); align-items: end; }
+    .contact .eyebrow { color: oklch(74% .13 264); }
+    .contact-title { max-width: 12ch; margin: 0; font-size: clamp(2.7rem, 6vw, 6.3rem); font-weight: 760; letter-spacing: -.06em; line-height: .96; text-wrap: balance; }
+    .contact-copy { max-width: 60ch; margin: 1.5rem 0 0; color: oklch(78% .025 260); }
+    .contact-links { margin: 0; padding: 0; list-style: none; border-top: 1px solid oklch(87% .025 260 / .18); }
+    .contact-links a { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; border-bottom: 1px solid oklch(87% .025 260 / .18); color: var(--clear); font-size: .85rem; font-weight: 600; text-decoration: none; transition: color .2s, padding .25s var(--ease); }
+    .contact-links a:hover { color: oklch(78% .13 264); padding-left: .35rem; }
+    .contact-links svg { width: 1rem; }
+    .footer { padding: 1.3rem 0; border-top: 1px solid oklch(87% .025 260 / .14); background: var(--ink); color: oklch(65% .025 260); }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; font-family: var(--mono); font-size: .62rem; }
+
+    .js .reveal { opacity: 0; transform: translateY(1.5rem); transition: opacity .75s var(--ease), transform .75s var(--ease); }
+    .js .reveal.is-visible { opacity: 1; transform: none; }
+
+    @media (max-width: 1020px) {
+      .nav-links { display: none; position: absolute; inset: var(--nav-height) 0 auto; flex-direction: column; align-items: stretch; gap: 0; padding: 1rem 1.25rem 1.4rem; border-bottom: 1px solid var(--line); background: var(--paper); box-shadow: 0 24px 40px oklch(27% .035 260 / .08); }
+      .nav-links.is-open { display: flex; }
+      .nav-links a { padding: .8rem 0; font-size: .95rem; }
+      .nav-links a::after { display: none; }
+      .menu-button { display: inline-grid; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-copy { max-width: 58ch; }
+      .system-figure { max-width: 42rem; }
+      .section-heading { grid-template-columns: 1fr; gap: 1.5rem; }
+      .profile-grid { grid-template-columns: 1fr; }
+      .role { grid-template-columns: 1fr; gap: 1.5rem; }
+      .case-study { grid-template-columns: 1fr; }
+      .secondary-case { grid-template-columns: 1fr auto; }
+      .secondary-case p { grid-column: 1 / -1; grid-row: 2; }
     }
 
-    /* ── Projects ── */
-    .project-main {
-      background: var(--dark); border-radius: var(--radius); overflow: hidden;
-      display: grid; grid-template-columns: 1fr 1fr;
-    }
-    .pm-left {
-      padding: 2.75rem; display: flex; flex-direction: column; justify-content: center;
-    }
-    .pm-label {
-      font-family: var(--mono); font-size: 0.72rem; color: var(--accent-light);
-      text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.75rem;
-    }
-    .pm-title {
-      font-family: var(--heading); font-weight: 800; font-size: 1.65rem;
-      color: #fff; line-height: 1.2; margin-bottom: 0.75rem; letter-spacing: -0.02em;
-    }
-    .pm-desc {
-      font-size: 0.88rem; color: #94A3B8; line-height: 1.7; margin-bottom: 1.75rem;
-    }
-    .pm-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-    .pm-stat-val {
-      font-family: var(--heading); font-weight: 800; font-size: 1.35rem; color: #fff;
-    }
-    .pm-stat-label { font-size: 0.72rem; color: #64748B; margin-top: 0.1rem; line-height: 1.3; }
-
-    .pm-right {
-      background: var(--dark-card); padding: 2.75rem;
-      display: flex; flex-direction: column; justify-content: center;
-      border-left: 1px solid #334155;
-    }
-    .pm-features { display: flex; flex-direction: column; gap: 1.25rem; }
-    .pm-feat-name {
-      font-family: var(--heading); font-weight: 600; font-size: 0.88rem;
-      color: #E2E8F0; margin-bottom: 0.1rem;
-    }
-    .pm-feat-desc { font-size: 0.78rem; color: #64748B; line-height: 1.5; }
-    .pm-tech {
-      display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 2rem;
-    }
-    .pm-tech span {
-      font-family: var(--mono); font-size: 0.62rem; color: #64748B;
-      border: 1px solid #334155; padding: 0.18rem 0.5rem; border-radius: 4px;
+    @media (max-width: 720px) {
+      :root { --nav-height: 4.15rem; }
+      .container { width: min(calc(100% - 1.5rem), var(--container)); }
+      .brand-name { display: none; }
+      .nav-actions { margin-left: auto; }
+      .hero { min-height: auto; padding-top: calc(var(--nav-height) + 3rem); }
+      .hero h1 { font-size: clamp(3.3rem, 16vw, 5.3rem); }
+      .figure-foot { grid-template-columns: 1fr; }
+      .figure-foot div { border-right: 0; border-bottom: 1px solid var(--line); }
+      .proof-grid { grid-template-columns: 1fr 1fr; }
+      .proof-item:nth-child(2) { border-right: 0; }
+      .proof-item:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .role-points { grid-template-columns: 1fr; }
+      .case-metrics { grid-template-columns: 1fr; }
+      .case-metric + .case-metric { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
+      .secondary-case { grid-template-columns: 1fr; }
+      .secondary-case p { grid-row: auto; }
+      .capability-matrix { grid-template-columns: 1fr; }
+      .education-item { grid-template-columns: 5rem 1fr; gap: 1rem; }
+      .education-place { grid-column: 2; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
     }
 
-    .projects-cards {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1.5rem;
-    }
-    .pcard {
-      padding: 1.75rem; border: 1px solid var(--border); border-radius: var(--radius);
-      background: var(--card); transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .pcard:hover {
-      border-color: var(--accent);
-      box-shadow: 0 4px 16px rgba(67,56,202,0.08);
-    }
-    .pcard-title {
-      font-family: var(--heading); font-weight: 700; font-size: 1rem;
-      color: var(--ink); margin-bottom: 0.4rem;
-    }
-    .pcard-desc { font-size: 0.85rem; color: var(--ink-light); line-height: 1.6; margin-bottom: 0.75rem; }
-
-    /* ── Skills ── */
-    .skills-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
-    }
-    .skill-card {
-      padding: 1.5rem; background: var(--bg); border: 1px solid var(--border);
-      border-radius: var(--radius); transition: border-color 0.2s;
-    }
-    .skill-card:hover { border-color: var(--accent); }
-    .skill-card-title {
-      font-family: var(--heading); font-weight: 700; font-size: 0.82rem;
-      color: var(--accent); text-transform: uppercase; letter-spacing: 0.03em;
-      margin-bottom: 0.75rem;
-    }
-    .skill-card ul { display: flex; flex-direction: column; gap: 0.25rem; }
-    .skill-card li { font-size: 0.85rem; color: var(--ink-mid); }
-
-    /* ── Education ── */
-    .edu-list { display: flex; flex-direction: column; }
-    .edu-item {
-      display: grid; grid-template-columns: 150px 1fr; gap: 2.5rem;
-      padding: 1.25rem 0; border-bottom: 1px solid var(--border);
-    }
-    .edu-item:last-child { border-bottom: none; }
-    .edu-year { font-size: 0.85rem; color: var(--ink-light); }
-    .edu-degree {
-      font-family: var(--heading); font-weight: 600; font-size: 0.95rem;
-      color: var(--ink);
-    }
-    .edu-school { font-size: 0.85rem; color: var(--ink-light); }
-    .edu-note { font-size: 0.82rem; color: var(--ink-muted); font-style: italic; margin-top: 0.2rem; }
-    .badge-wip {
-      display: inline-block; font-size: 0.6rem; font-weight: 700;
-      color: var(--accent); background: var(--accent-bg);
-      padding: 0.12rem 0.45rem; border-radius: 4px;
-      margin-left: 0.4rem; text-transform: uppercase; vertical-align: middle;
-    }
-
-    /* ── Contact ── */
-    .contact-section { padding: 5rem 0; background: var(--dark); color: #fff; }
-    .contact-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
-    }
-    .contact-heading {
-      font-family: var(--heading); font-weight: 800; font-size: 2.5rem;
-      line-height: 1.12; letter-spacing: -0.03em;
-    }
-    .contact-sub {
-      font-size: 0.88rem; color: #64748B; margin-top: 0.75rem; line-height: 1.6;
-    }
-    .contact-links { display: flex; flex-direction: column; gap: 0.6rem; }
-    .contact-link {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1rem 1.25rem; border: 1px solid #334155; border-radius: 10px;
-      transition: border-color 0.2s, background 0.2s;
-      font-size: 0.9rem; font-weight: 500; color: #CBD5E1;
-    }
-    .contact-link:hover {
-      border-color: var(--accent-light); background: rgba(255,255,255,0.03);
-    }
-    .contact-link .arr {
-      color: #475569; transition: color 0.2s, transform 0.2s;
-    }
-    .contact-link:hover .arr { color: var(--accent-light); transform: translateX(3px); }
-
-    .footer {
-      padding: 1.25rem 0; background: var(--dark); border-top: 1px solid #1E293B;
-      text-align: center;
-    }
-    .footer p { font-size: 0.72rem; color: #475569; }
-
-    /* ── Responsive ── */
-    @media (max-width: 900px) {
-      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
-      .project-main { grid-template-columns: 1fr; }
-      .pm-right { border-left: none; border-top: 1px solid #334155; }
-      .projects-cards { grid-template-columns: 1fr; }
-      .skills-grid { grid-template-columns: 1fr 1fr; }
-      .edu-item { grid-template-columns: 1fr; gap: 0.25rem; }
-      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .contact-heading { font-size: 2rem; }
-      .nav-links { display: none; }
-      .mobile-toggle { display: block; }
-      .nav-links.mobile-open {
-        display: flex; flex-direction: column; position: absolute;
-        top: 100%; left: 0; right: 0; background: var(--bg);
-        padding: 1.5rem 2rem; border-bottom: 1px solid var(--border);
-        gap: 1rem;
-      }
-      .section-head { flex-direction: column; gap: 0.25rem; }
-    }
-    @media (max-width: 600px) {
-      .skills-grid { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 2.4rem; }
-      .section { padding: 3.5rem 0; }
-      .wrap { padding: 0 1.25rem; }
-      .pm-stats { grid-template-columns: 1fr 1fr; }
-      .hero-actions { flex-direction: column; }
-      .btn-primary, .btn-secondary { text-align: center; justify-content: center; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+      .js .reveal { opacity: 1; transform: none; }
     }
   </style>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Andrés Felipe Restrepo Melo",
+      "url": "https://portfolio-3zv.pages.dev/",
+      "jobTitle": "Senior Business Intelligence and Advanced Analytics Specialist",
+      "email": "mailto:andresfere25@gmail.com",
+      "address": {"@type": "PostalAddress", "addressLocality": "Bogotá", "addressCountry": "CO"},
+      "alumniOf": [
+        {"@type": "CollegeOrUniversity", "name": "Universidad de la Sabana"},
+        {"@type": "CollegeOrUniversity", "name": "Universidad Nacional de Colombia"}
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/andres-felipe-restrepo-melo-cv/",
+        "https://github.com/andresfere25"
+      ]
+    }
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">
+    <span data-lang="es">Saltar al contenido</span><span data-lang="en" hidden>Skip to content</span>
+  </a>
 
-  <!-- NAV -->
-  <nav class="nav">
-    <div class="nav-inner">
-      <a href="#" class="nav-logo">Andr&eacute;s Restrepo</a>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#education">Education</a>
-        <a href="#contact" class="nav-cta">Contact</a>
+  <nav class="site-nav" aria-label="Navegación principal">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="Andrés Restrepo, inicio">
+        <span class="brand-mark" aria-hidden="true">AR</span>
+        <span class="brand-name">Andrés Restrepo</span>
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a href="#profile"><span data-lang="es">Perfil</span><span data-lang="en" hidden>Profile</span></a>
+        <a href="#experience"><span data-lang="es">Experiencia</span><span data-lang="en" hidden>Experience</span></a>
+        <a href="#projects"><span data-lang="es">Proyectos</span><span data-lang="en" hidden>Projects</span></a>
+        <a href="#capabilities"><span data-lang="es">Capacidades</span><span data-lang="en" hidden>Capabilities</span></a>
+        <a href="#education"><span data-lang="es">Educación</span><span data-lang="en" hidden>Education</span></a>
+        <a href="#contact"><span data-lang="es">Contacto</span><span data-lang="en" hidden>Contact</span></a>
       </div>
-      <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="nav-actions">
+        <div class="lang-switch" role="group" aria-label="Idioma">
+          <button type="button" data-set-lang="es" aria-pressed="true">ES</button>
+          <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button class="menu-button" type="button" aria-controls="nav-links" aria-expanded="false" aria-label="Abrir menú">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="wrap">
-      <div class="hero-inner">
-        <div class="hero-badge">
-          <span class="dot"></span> Open to new opportunities
-        </div>
-        <h1>Hi, I'm <span class="name">Andr&eacute;s<br/>Restrepo</span></h1>
-        <p class="hero-sub">
-          <strong>BI &amp; Data Analyst</strong> with 4+ years turning data into decisions
-          across LATAM e-commerce and digital marketing.
-        </p>
-        <div class="hero-actions">
-          <a href="#projects" class="btn-primary">View Projects &rarr;</a>
-          <a href="#contact" class="btn-secondary">Get in Touch</a>
-        </div>
-        <div class="hero-chips">
-          <span class="hero-chip">SQL</span>
-          <span class="hero-chip">BigQuery</span>
-          <span class="hero-chip">Power BI</span>
-          <span class="hero-chip">Python</span>
-          <span class="hero-chip">FastAPI</span>
-          <span class="hero-chip">Docker</span>
-          <span class="hero-chip">GCP</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="section section-alt">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>About</h2>
-        <p>Background &amp; focus areas</p>
-      </div>
-      <div class="about-grid">
-        <div class="about-text">
-          <p>
-            I work at the intersection of <strong>data engineering, analytics, and business strategy</strong>.
-            Over the past four years I've built reporting pipelines in BigQuery,
-            executive dashboards in Power BI, and data quality frameworks for e-commerce
-            operations spanning multiple countries across Latin America.
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div class="hero-content reveal">
+          <div class="status"><span class="status-dot" aria-hidden="true"></span><span data-lang="es">Disponible para nuevas oportunidades</span><span data-lang="en" hidden>Open to new opportunities</span></div>
+          <h1>Andrés <span>Restrepo</span></h1>
+          <p class="hero-role">
+            <span data-lang="es">Business Intelligence senior y analítica avanzada.</span>
+            <span data-lang="en" hidden>Senior Business Intelligence and advanced analytics.</span>
           </p>
-          <p>
-            Before that I spent nearly three years in digital marketing analytics at
-            <strong>IPG Mediabrands</strong>, where I learned to translate campaign data into
-            investment decisions and to make stakeholders care about the numbers.
+          <p class="hero-copy">
+            <span data-lang="es">Conecto negocio, plataformas de datos y machine learning para convertir información compleja en decisiones medibles.</span>
+            <span data-lang="en" hidden>I connect business, data platforms, and machine learning to turn complex information into measurable decisions.</span>
           </p>
-          <p>
-            I hold a degree in Business Administration from <strong>Universidad Nacional
-            de Colombia</strong> and I'm currently finishing a <strong>Master's in Applied
-            Analytics</strong> at Universidad de la Sabana, where my thesis project is a
-            full-stack ML platform for athlete coaching.
-          </p>
-        </div>
-        <div class="about-side">
-          <div class="side-block">
-            <div class="side-title">Focus areas</div>
-            <ul class="side-list">
-              <li>Advanced SQL on BigQuery at scale</li>
-              <li>Power BI dashboards &amp; KPI consistency</li>
-              <li>Data quality &amp; cross-source reconciliation</li>
-              <li>Business requirements to analytical solutions</li>
-              <li>Python for modeling &amp; automation</li>
-            </ul>
-          </div>
-          <div class="stats-row">
-            <div class="stat">
-              <div class="stat-val">4+</div>
-              <div class="stat-label">Years in analytics</div>
-            </div>
-            <div class="stat">
-              <div class="stat-val">C1</div>
-              <div class="stat-label">English level</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience" class="section">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Experience</h2>
-        <p>Where I've worked</p>
-      </div>
-      <div class="exp-list">
-        <div class="exp-item">
-          <div>
-            <div class="exp-when">May 2024 &mdash; Present</div>
-            <div class="exp-badge">Current</div>
-          </div>
-          <div>
-            <div class="exp-role">Business Intelligence Analyst</div>
-            <div class="exp-company">InfraCommerce &middot; Bogot&aacute;</div>
-            <ul class="exp-bullets">
-              <li>Optimize SQL queries in BigQuery for LATAM regional e-commerce reporting, supporting commercial decisions across multiple clients and markets</li>
-              <li>Build and maintain Power BI dashboards focused on KPI consistency, metric integrity, and report performance for internal and external stakeholders</li>
-              <li>Integrate data from external APIs and heterogeneous sources, standardizing datasets for reliable cross-market analysis</li>
-              <li>Validate and reconcile data between operational sources and the Data Warehouse, resolving discrepancies that affect reporting trust</li>
-              <li>Manage analytical requirements in Jira with agile methodology, coordinating deliverables across teams and clients</li>
-            </ul>
-            <div class="exp-tags">
-              <span class="tag">BigQuery</span><span class="tag">SQL</span>
-              <span class="tag">Power BI</span><span class="tag">APIs</span>
-              <span class="tag">Data Quality</span><span class="tag">Jira</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="exp-item">
-          <div>
-            <div class="exp-when">Jun 2021 &mdash; Mar 2024</div>
-          </div>
-          <div>
-            <div class="exp-role">BI Analyst / Digital Analyst</div>
-            <div class="exp-company">IPG Mediabrands Initiative &middot; Bogot&aacute;</div>
-            <ul class="exp-bullets">
-              <li>Designed performance dashboards for digital campaigns, enabling real-time KPI tracking for account teams and clients</li>
-              <li>Gathered stakeholder requirements and translated business needs into metrics, reports, and actionable visualizations</li>
-              <li>Extracted, integrated, and cleansed data from multiple digital platforms, reducing preparation time through partial automation</li>
-              <li>Built relational data models and SQL queries to consolidate sources and ensure indicator consistency across campaigns</li>
-              <li>Prepared executive reporting to support digital media investment decisions</li>
-            </ul>
-            <div class="exp-tags">
-              <span class="tag">Dashboards</span><span class="tag">Digital Marketing</span>
-              <span class="tag">SQL</span><span class="tag">KPIs</span>
-              <span class="tag">Reporting</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="section section-alt">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Projects</h2>
-        <p>Selected work</p>
-      </div>
-
-      <div class="project-main">
-        <div class="pm-left">
-          <div class="pm-label">Master's Thesis</div>
-          <div class="pm-title">Running Coaching Analytics Platform</div>
-          <p class="pm-desc">
-            End-to-end ML platform for competitive runners. Ingests real training
-            data from Strava, engineers load metrics, predicts race times across
-            distances, and serves everything through a REST API with an interactive
-            coaching dashboard.
-          </p>
-          <div class="pm-stats">
-            <div>
-              <div class="pm-stat-val">103K+</div>
-              <div class="pm-stat-label">Boston Marathon records for calibration</div>
-            </div>
-            <div>
-              <div class="pm-stat-val">18+</div>
-              <div class="pm-stat-label">REST API endpoints</div>
-            </div>
-            <div>
-              <div class="pm-stat-val">61</div>
-              <div class="pm-stat-label">Automated tests</div>
-            </div>
-            <div>
-              <div class="pm-stat-val">4,800+</div>
-              <div class="pm-stat-label">Lines of Python</div>
-            </div>
-          </div>
-        </div>
-        <div class="pm-right">
-          <div class="pm-features">
-            <div>
-              <div class="pm-feat-name">4-Layer Prediction System</div>
-              <div class="pm-feat-desc">Calibrated Riegel + demographic correction via Ridge regression on 429K+ global results</div>
-            </div>
-            <div>
-              <div class="pm-feat-name">Training Load Analytics</div>
-              <div class="pm-feat-desc">CTL, ATL, ACWR feature engineering with EWMA methodology and risk zone classification</div>
-            </div>
-            <div>
-              <div class="pm-feat-name">Interactive Dashboard</div>
-              <div class="pm-feat-desc">Load semaphore, KPI grid, trend charts, and personalized weekly training plan</div>
-            </div>
-            <div>
-              <div class="pm-feat-name">Strava + CI/CD</div>
-              <div class="pm-feat-desc">OAuth sync, GitHub Actions weekly automation, Docker containerized on Railway</div>
-            </div>
-          </div>
-          <div class="pm-tech">
-            <span>Python</span><span>FastAPI</span><span>DuckDB</span><span>Pandas</span>
-            <span>Alpine.js</span><span>Tailwind</span><span>Chart.js</span><span>Docker</span>
-            <span>Railway</span><span>GitHub Actions</span><span>Supabase</span><span>Strava API</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="projects-cards">
-        <div class="pcard">
-          <div class="pcard-title">E-Commerce BI Framework</div>
-          <p class="pcard-desc">
-            Regional reporting architecture for LATAM e-commerce. BigQuery pipelines,
-            Power BI dashboards, and a KPI consistency framework serving multiple clients.
-          </p>
-          <div class="exp-tags">
-            <span class="tag">BigQuery</span><span class="tag">Power BI</span>
-            <span class="tag">SQL</span><span class="tag">Data Quality</span>
-          </div>
-        </div>
-        <div class="pcard">
-          <div class="pcard-title">Digital Campaign Analytics</div>
-          <p class="pcard-desc">
-            Cross-platform performance dashboards for digital marketing. Automated data
-            extraction, KPI tracking, and executive reporting for media investment decisions.
-          </p>
-          <div class="exp-tags">
-            <span class="tag">Dashboards</span><span class="tag">KPIs</span>
-            <span class="tag">SQL</span><span class="tag">Automation</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills" class="section">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Skills &amp; Tools</h2>
-        <p>What I work with</p>
-      </div>
-      <div class="skills-grid">
-        <div class="skill-card">
-          <div class="skill-card-title">Data &amp; Analysis</div>
-          <ul>
-            <li>SQL &middot; BigQuery &middot; PostgreSQL</li>
-            <li>MySQL &middot; DuckDB</li>
-            <li>Applied Statistics</li>
-            <li>KPI Design &middot; Data Quality</li>
-          </ul>
-        </div>
-        <div class="skill-card">
-          <div class="skill-card-title">Visualization</div>
-          <ul>
-            <li>Power BI &middot; DAX &middot; Power Query</li>
-            <li>Looker Studio</li>
-            <li>Chart.js</li>
-            <li>Executive Reporting</li>
-          </ul>
-        </div>
-        <div class="skill-card">
-          <div class="skill-card-title">Programming</div>
-          <ul>
-            <li>Python &middot; Pandas</li>
-            <li>FastAPI &middot; REST APIs</li>
-            <li>ETL Pipelines</li>
-          </ul>
-        </div>
-        <div class="skill-card">
-          <div class="skill-card-title">Cloud &amp; Infra</div>
-          <ul>
-            <li>Google Cloud &middot; BigQuery</li>
-            <li>Supabase &middot; Railway</li>
-            <li>Docker</li>
-          </ul>
-        </div>
-        <div class="skill-card">
-          <div class="skill-card-title">ML &amp; Analytics</div>
-          <ul>
-            <li>Predictive Modeling</li>
-            <li>Feature Engineering</li>
-            <li>Regression &middot; Time Series</li>
-            <li>EDA</li>
-          </ul>
-        </div>
-        <div class="skill-card">
-          <div class="skill-card-title">DevOps &amp; Process</div>
-          <ul>
-            <li>Git &middot; GitHub Actions &middot; CI/CD</li>
-            <li>Jira &middot; Agile</li>
-            <li>Documentation</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section id="education" class="section section-alt">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Education</h2>
-        <p>Academic background</p>
-      </div>
-      <div class="edu-list">
-        <div class="edu-item">
-          <div class="edu-year">2024 &mdash; Present</div>
-          <div>
-            <div class="edu-degree">M.Sc. in Applied Analytics <span class="badge-wip">In progress</span></div>
-            <div class="edu-school">Universidad de la Sabana &middot; Ch&iacute;a, Colombia</div>
-            <div class="edu-note">Thesis: Running Coaching Analytics Platform &mdash; predictive modeling, API development, and deployment.</div>
-          </div>
-        </div>
-        <div class="edu-item">
-          <div class="edu-year">2021</div>
-          <div>
-            <div class="edu-degree">Business Intelligence Diploma</div>
-            <div class="edu-school">Universidad Nacional de Colombia &middot; Bogot&aacute;</div>
-          </div>
-        </div>
-        <div class="edu-item">
-          <div class="edu-year">2015 &mdash; 2020</div>
-          <div>
-            <div class="edu-degree">B.A. in Business Administration</div>
-            <div class="edu-school">Universidad Nacional de Colombia &middot; Bogot&aacute;</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="contact-section">
-    <div class="wrap">
-      <div class="contact-grid">
-        <div>
-          <div class="contact-heading">Let's work<br/>together.</div>
-          <div class="contact-sub">
-            Bogot&aacute;, Colombia<br/>
-            Available for BI, Data Analytics,<br/>
-            and Applied Analytics roles.
-          </div>
-        </div>
-        <div>
-          <div class="contact-links">
-            <a href="mailto:andresfere25@gmail.com" class="contact-link">
-              <span>andresfere25@gmail.com</span>
-              <span class="arr">&rarr;</span>
+          <div class="actions">
+            <a class="button button--primary" id="cv-download" href="assets/cv/Andres_Restrepo_CV_ES.pdf" download>
+              <span data-lang="es">Descargar CV</span><span data-lang="en" hidden>Download CV</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg>
             </a>
-            <a href="https://www.linkedin.com/in/andres-felipe-restrepo-melo-cv/" target="_blank" class="contact-link">
-              <span>LinkedIn</span>
-              <span class="arr">&rarr;</span>
-            </a>
-            <a href="https://github.com/andresfere25" target="_blank" class="contact-link">
-              <span>GitHub</span>
-              <span class="arr">&rarr;</span>
-            </a>
-            <a href="tel:+573209464352" class="contact-link">
-              <span>+57 320 946 4352</span>
-              <span class="arr">&rarr;</span>
+            <a class="button button--secondary" href="#projects">
+              <span data-lang="es">Ver proyectos</span><span data-lang="en" hidden>View projects</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
             </a>
           </div>
         </div>
+
+        <figure class="system-figure reveal" aria-labelledby="system-caption">
+          <figcaption class="figure-head" id="system-caption"><span>ANALYTICS / DECISION SYSTEM</span><span class="figure-state">ACTIVE</span></figcaption>
+          <svg class="system-map" viewBox="0 0 560 430" role="img" aria-label="Flujo desde fuentes de datos hasta decisiones de negocio">
+            <g aria-hidden="true">
+              <path class="grid-line" d="M0 86H560M0 172H560M0 258H560M0 344H560"/>
+              <path class="grid-line" d="M112 0V430M224 0V430M336 0V430M448 0V430"/>
+              <path class="flow-line" d="M92 112C176 112 164 215 256 215S350 112 455 112"/>
+              <path class="flow-line" d="M92 316C176 316 170 215 256 215S354 316 455 316"/>
+            </g>
+            <g transform="translate(30 78)">
+              <rect class="node" width="125" height="68" rx="10"/>
+              <text class="label" x="14" y="24">SOURCE 01</text><text class="value" x="14" y="48">Fabric</text>
+            </g>
+            <g transform="translate(30 282)">
+              <rect class="node" width="125" height="68" rx="10"/>
+              <text class="label" x="14" y="24">SOURCE 02</text><text class="value" x="14" y="48">BigQuery</text>
+            </g>
+            <g transform="translate(203 181)">
+              <rect class="node node--active" width="128" height="68" rx="10"/>
+              <text class="label value--light" x="14" y="24">MODEL</text><text class="value value--light" x="14" y="48">SQL + ML</text>
+            </g>
+            <g transform="translate(405 78)">
+              <rect class="node" width="125" height="68" rx="10"/>
+              <text class="label" x="14" y="24">DECISION 01</text><text class="value" x="14" y="48">KPIs</text>
+            </g>
+            <g transform="translate(405 282)">
+              <rect class="node" width="125" height="68" rx="10"/>
+              <text class="label" x="14" y="24">DECISION 02</text><text class="value" x="14" y="48">Forecast</text>
+            </g>
+          </svg>
+          <div class="figure-foot" aria-hidden="true">
+            <div><strong>Integrate</strong><span>API / ELT / DELTA</span></div>
+            <div><strong>Model</strong><span>SQL / DAX / PYTHON</span></div>
+            <div><strong>Decide</strong><span>KPI / INSIGHT / ACTION</span></div>
+          </div>
+        </figure>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer class="footer">
-    <p>&copy; 2026 Andr&eacute;s Restrepo Melo &middot; Bogot&aacute;, Colombia</p>
-  </footer>
+    <section class="proof-bar" aria-label="Resultados destacados">
+      <div class="container proof-grid">
+        <div class="proof-item"><span class="proof-value">5+</span><span class="proof-label"><span data-lang="es">años trabajando con datos</span><span data-lang="en" hidden>years working with data</span></span></div>
+        <div class="proof-item"><span class="proof-value">~60%</span><span class="proof-label"><span data-lang="es">reducción de costos en BigQuery</span><span data-lang="en" hidden>BigQuery cost reduction</span></span></div>
+        <div class="proof-item"><span class="proof-value">46.2%</span><span class="proof-label"><span data-lang="es">mejora de error en RUNY</span><span data-lang="en" hidden>RUNY error improvement</span></span></div>
+        <div class="proof-item"><span class="proof-value">B2</span><span class="proof-label"><span data-lang="es">inglés profesional</span><span data-lang="en" hidden>professional English</span></span></div>
+      </div>
+    </section>
 
+    <section class="section" id="profile">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div><p class="eyebrow">01 / PROFILE</p><h2 class="section-title"><span data-lang="es">Datos que llegan hasta la decisión.</span><span data-lang="en" hidden>Data that reaches the decision.</span></h2></div>
+          <p class="section-intro"><span data-lang="es">Mi trabajo cubre el recorrido completo: necesidad de negocio, arquitectura, calidad, modelado, visualización y conversación con el cliente.</span><span data-lang="en" hidden>My work covers the full path: business need, architecture, quality, modeling, visualization, and client conversation.</span></p>
+        </div>
+        <div class="profile-grid reveal">
+          <div class="profile-copy">
+            <p data-lang="es">Soy <strong>Magíster en Analítica Aplicada</strong> y Administrador de Empresas, con más de cinco años construyendo soluciones para operaciones B2B y B2C en Latinoamérica. Combino Microsoft Fabric, Power BI, BigQuery, SQL y Python con conocimiento del negocio y entrega ejecutiva.</p>
+            <p data-lang="en" hidden>I hold an <strong>M.Sc. in Applied Analytics</strong> and a degree in Business Administration, with more than five years building solutions for B2B and B2C operations across Latin America. I combine Microsoft Fabric, Power BI, BigQuery, SQL, and Python with business understanding and executive delivery.</p>
+            <p data-lang="es">He liderado levantamiento de requerimientos, planeación de sprints, demostraciones y presentaciones con clientes, equipos regionales e internacionales. También desarrollo soluciones predictivas y automatizaciones básicas cuando el problema requiere ir más allá del reporting.</p>
+            <p data-lang="en" hidden>I have led requirements discovery, sprint planning, demonstrations, and presentations with clients and regional and international teams. I also build predictive solutions and basic automation when the problem requires more than reporting.</p>
+          </div>
+          <ol class="scope-list">
+            <li><b>01</b><span data-lang="es">Traducir necesidades en KPIs y productos analíticos.</span><span data-lang="en" hidden>Translate needs into KPIs and analytics products.</span></li>
+            <li><b>02</b><span data-lang="es">Diseñar flujos y modelos de datos confiables.</span><span data-lang="en" hidden>Design reliable data flows and models.</span></li>
+            <li><b>03</b><span data-lang="es">Construir tableros que revelen decisiones.</span><span data-lang="en" hidden>Build dashboards that reveal decisions.</span></li>
+            <li><b>04</b><span data-lang="es">Validar, desplegar y comunicar resultados.</span><span data-lang="en" hidden>Validate, deploy, and communicate results.</span></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--quiet" id="experience">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div><p class="eyebrow">02 / EXPERIENCE</p><h2 class="section-title"><span data-lang="es">Experiencia aplicada a operaciones reales.</span><span data-lang="en" hidden>Experience applied to real operations.</span></h2></div>
+          <p class="section-intro"><span data-lang="es">Los cargos más recientes concentran plataformas modernas de datos, BI, optimización y trabajo directo con cliente.</span><span data-lang="en" hidden>My most recent roles combine modern data platforms, BI, optimization, and direct client collaboration.</span></p>
+        </div>
+        <div class="timeline">
+          <article class="role reveal">
+            <div class="role-meta"><span class="role-period">2026</span><span class="role-company">Quántico</span><span class="role-location">Colombia</span></div>
+            <div>
+              <h3 class="role-title">Business Intelligence Expert <span data-lang="es">- Proyecto ILC</span><span data-lang="en" hidden>- ILC Project</span></h3>
+              <p class="role-summary"><span data-lang="es">Transformación digital y evolución de soluciones BI para presupuestos, simulaciones, PQRS, servicio, producción, calidad y asuntos corporativos.</span><span data-lang="en" hidden>Digital transformation and BI solution development across budgeting, simulations, customer requests, service, production, quality, and corporate affairs.</span></p>
+              <ul class="role-points">
+                <li><span data-lang="es">Flujos con Dataflow Gen2, pipelines, tablas Delta, vistas SQL, notebooks y scripts Python.</span><span data-lang="en" hidden>Flows using Dataflow Gen2, pipelines, Delta tables, SQL views, notebooks, and Python scripts.</span></li>
+                <li><span data-lang="es">Modelos semánticos, DAX y visualizaciones ejecutivas en Power BI.</span><span data-lang="en" hidden>Semantic models, DAX, and executive visualizations in Power BI.</span></li>
+                <li><span data-lang="es">Conexiones corporativas con Dynamics 365 y Dataverse.</span><span data-lang="en" hidden>Corporate-source connections with Dynamics 365 and Dataverse.</span></li>
+                <li><span data-lang="es">Sprints, demostraciones y presentación de resultados con ILC.</span><span data-lang="en" hidden>Sprints, demonstrations, and results presentations with ILC.</span></li>
+              </ul>
+              <div class="tech-line"><span>MICROSOFT FABRIC</span><span>POWER BI</span><span>ONELAKE</span><span>DELTA</span><span>DAX</span><span>PYTHON</span></div>
+            </div>
+          </article>
+
+          <article class="role reveal">
+            <div class="role-meta"><span class="role-period">2024 - 2026</span><span class="role-company">InfraCommerce</span><span class="role-location">Bogotá, Colombia</span></div>
+            <div>
+              <h3 class="role-title">Business Intelligence Analyst</h3>
+              <p class="role-summary"><span data-lang="es">Soluciones analíticas regionales de e-commerce B2B y B2C para marcas globales como H&amp;M y Mondelez.</span><span data-lang="en" hidden>Regional B2B and B2C e-commerce analytics solutions for global brands including H&amp;M and Mondelez.</span></p>
+              <ul class="role-points">
+                <li><span data-lang="es">Arquitectura medallion con capas Bronze, Silver y Gold, controles de calidad y linaje.</span><span data-lang="en" hidden>Medallion architecture with Bronze, Silver, and Gold layers, quality controls, and lineage.</span></li>
+                <li><span data-lang="es">Integraciones de BigQuery, Cloud Storage, APIs y Power BI.</span><span data-lang="en" hidden>BigQuery, Cloud Storage, API, and Power BI integrations.</span></li>
+                <li><span data-lang="es">Reducción aproximada del 60% en costos de procesamiento de flujos críticos.</span><span data-lang="en" hidden>Approximately 60% reduction in processing costs for critical workflows.</span></li>
+                <li><span data-lang="es">Liderazgo de requerimientos, sprints y presentaciones con equipos internacionales.</span><span data-lang="en" hidden>Requirements, sprint, and presentation leadership with international teams.</span></li>
+              </ul>
+              <div class="tech-line"><span>BIGQUERY</span><span>SQL</span><span>POWER BI</span><span>APIS</span><span>DATA QUALITY</span><span>JIRA</span></div>
+            </div>
+          </article>
+
+          <article class="role reveal">
+            <div class="role-meta"><span class="role-period">2021 - 2024</span><span class="role-company">IPG Mediabrands</span><span class="role-location">Bogotá, Colombia</span></div>
+            <div>
+              <h3 class="role-title">Business Intelligence Analyst / Digital Analyst</h3>
+              <p class="role-summary"><span data-lang="es">Dashboards ejecutivos, integración de fuentes y análisis de campañas digitales para orientar decisiones de inversión en medios.</span><span data-lang="en" hidden>Executive dashboards, source integration, and digital campaign analytics supporting media investment decisions.</span></p>
+              <ul class="role-points">
+                <li><span data-lang="es">Modelado y consultas SQL para consolidar indicadores.</span><span data-lang="en" hidden>Data modeling and SQL queries to consolidate performance metrics.</span></li>
+                <li><span data-lang="es">Automatización parcial de reporting y análisis ad hoc.</span><span data-lang="en" hidden>Partial reporting automation and ad hoc analysis.</span></li>
+              </ul>
+              <div class="tech-line"><span>DASHBOARDS</span><span>SQL</span><span>KPIS</span><span>DIGITAL ANALYTICS</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div><p class="eyebrow">03 / PROJECTS</p><h2 class="section-title"><span data-lang="es">Proyectos con hipótesis, validación y entrega.</span><span data-lang="en" hidden>Projects with hypotheses, validation, and delivery.</span></h2></div>
+          <p class="section-intro"><span data-lang="es">Machine learning aplicado a rendimiento deportivo y demanda comercial, con resultados verificables y arquitectura desplegada.</span><span data-lang="en" hidden>Machine learning applied to athletic performance and commercial demand, with verifiable results and deployed architecture.</span></p>
+        </div>
+
+        <article class="case-study reveal">
+          <div class="case-main">
+            <span class="case-label"><span data-lang="es">Proyecto de grado / Creación y liderazgo</span><span data-lang="en" hidden>Capstone project / Creation and leadership</span></span>
+            <h3 class="case-title">RUNY</h3>
+            <p class="case-copy"><span data-lang="es">Aplicación web de analítica predictiva para corredores. Integra datos de Strava, una arquitectura jerárquica de machine learning, cuantificación del rendimiento y despliegue en producción.</span><span data-lang="en" hidden>Predictive analytics web application for runners. It integrates Strava data, a hierarchical machine learning architecture, performance estimation, and production deployment.</span></p>
+            <div class="case-metrics">
+              <div class="case-metric"><strong>46.2%</strong><span data-lang="es">mejora del MAE</span><span data-lang="en" hidden>MAE improvement</span></div>
+              <div class="case-metric"><strong>9,049</strong><span data-lang="es">sesiones comparables</span><span data-lang="en" hidden>comparable sessions</span></div>
+              <div class="case-metric"><strong>46</strong><span data-lang="es">atletas validados</span><span data-lang="en" hidden>validated athletes</span></div>
+            </div>
+          </div>
+          <div class="case-aside">
+            <div>
+              <h3><span data-lang="es">Arquitectura y rigor</span><span data-lang="en" hidden>Architecture and rigor</span></h3>
+              <ol class="architecture">
+                <li><span data-lang="es">Ingesta e integración con Strava.</span><span data-lang="en" hidden>Strava ingestion and integration.</span></li>
+                <li><span data-lang="es">Feature engineering y modelos jerárquicos.</span><span data-lang="en" hidden>Feature engineering and hierarchical models.</span></li>
+                <li><span data-lang="es">Walk-forward, Wilcoxon, Holm y prevención de data leakage.</span><span data-lang="en" hidden>Walk-forward, Wilcoxon, Holm, and data leakage prevention.</span></li>
+                <li><span data-lang="es">API, persistencia, frontend y CI/CD.</span><span data-lang="en" hidden>API, persistence, frontend, and CI/CD.</span></li>
+              </ol>
+            </div>
+            <p class="case-stack">PYTHON / FASTAPI / REACT / RAILWAY / CLOUDFLARE / SUPABASE / GITHUB ACTIONS</p>
+          </div>
+        </article>
+
+        <article class="secondary-case reveal">
+          <h3><span data-lang="es">Predicción de demanda para canal mayorista</span><span data-lang="en" hidden>Wholesale demand forecasting</span></h3>
+          <p><span data-lang="es">Pipeline de ML para estimar demanda por SKU, cliente y mes, integrando series de tiempo, inventario y precios para priorizar oportunidades por vendedor.</span><span data-lang="en" hidden>ML pipeline estimating demand by SKU, customer, and month, integrating time-series signals, inventory, and pricing to prioritize opportunities by sales representative.</span></p>
+          <span class="metric-token">RMSE 7.21 / R² 63.5%</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section--quiet" id="capabilities">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div><p class="eyebrow">04 / CAPABILITIES</p><h2 class="section-title"><span data-lang="es">Un perfil entre BI, datos y analítica aplicada.</span><span data-lang="en" hidden>A profile across BI, data, and applied analytics.</span></h2></div>
+          <p class="section-intro"><span data-lang="es">Herramientas organizadas por el tipo de problema que resuelven, no como una lista aislada de tecnologías.</span><span data-lang="en" hidden>Tools organized by the problems they solve, not as an isolated technology list.</span></p>
+        </div>
+        <div class="capability-matrix reveal">
+          <article class="capability"><span class="capability-index">01 / BI</span><h3>Business Intelligence</h3><p><span data-lang="es">Modelos semánticos, KPIs, DAX, experiencia de usuario, rendimiento y visualización ejecutiva.</span><span data-lang="en" hidden>Semantic models, KPIs, DAX, user experience, performance, and executive visualization.</span></p><div class="capability-tools">POWER BI / DAX / POWER QUERY / SEMANTIC MODELS</div></article>
+          <article class="capability"><span class="capability-index">02 / PLATFORMS</span><h3><span data-lang="es">Plataformas de datos</span><span data-lang="en" hidden>Data platforms</span></h3><p><span data-lang="es">Integración, lakehouse, ETL/ELT, pipelines, tablas Delta, SQL avanzado, calidad y optimización.</span><span data-lang="en" hidden>Integration, lakehouse, ETL/ELT, pipelines, Delta tables, advanced SQL, quality, and optimization.</span></p><div class="capability-tools">MICROSOFT FABRIC / ONELAKE / BIGQUERY / CLOUD STORAGE</div></article>
+          <article class="capability"><span class="capability-index">03 / ML</span><h3>Data Science</h3><p><span data-lang="es">Machine learning, AutoML, modelos lineales, Random Forest, series de tiempo, feature engineering y validación estadística.</span><span data-lang="en" hidden>Machine learning, AutoML, linear models, Random Forest, time series, feature engineering, and statistical validation.</span></p><div class="capability-tools">PYTHON / PANDAS / SCIKIT-LEARN / FASTAPI</div></article>
+          <article class="capability"><span class="capability-index">04 / DELIVERY</span><h3><span data-lang="es">Entrega y automatización</span><span data-lang="en" hidden>Delivery and automation</span></h3><p><span data-lang="es">Requerimientos, sprints, documentación, despliegue y automatización básica con scripts Python, Apps Script, APIs y GitHub Actions.</span><span data-lang="en" hidden>Requirements, sprints, documentation, deployment, and basic automation with Python scripts, Apps Script, APIs, and GitHub Actions.</span></p><div class="capability-tools">SCRUM / JIRA / GIT / DOCKER / RAILWAY / CLOUDFLARE</div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="education">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div><p class="eyebrow">05 / EDUCATION</p><h2 class="section-title"><span data-lang="es">Formación que conecta negocio y analítica.</span><span data-lang="en" hidden>Education connecting business and analytics.</span></h2></div>
+          <p class="section-intro"><span data-lang="es">La maestría está culminada y su proyecto de grado se convirtió en RUNY, una aplicación desplegada.</span><span data-lang="en" hidden>The master's degree is complete, and its capstone became RUNY, a deployed application.</span></p>
+        </div>
+        <div class="education-list reveal">
+          <article class="education-item"><span class="education-year">2026</span><div><div class="education-degree"><span data-lang="es">Magíster en Analítica Aplicada</span><span data-lang="en" hidden>M.Sc. in Applied Analytics</span></div><div class="education-school">Universidad de la Sabana</div></div><span class="education-place">Chía, Colombia</span></article>
+          <article class="education-item"><span class="education-year">2021</span><div><div class="education-degree"><span data-lang="es">Diplomado en Business Intelligence</span><span data-lang="en" hidden>Business Intelligence Diploma</span></div><div class="education-school">Universidad Nacional de Colombia</div></div><span class="education-place">Bogotá, Colombia</span></article>
+          <article class="education-item"><span class="education-year">2020</span><div><div class="education-degree"><span data-lang="es">Administrador de Empresas</span><span data-lang="en" hidden>B.A. in Business Administration</span></div><div class="education-school">Universidad Nacional de Colombia</div></div><span class="education-place">Bogotá, Colombia</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="container contact-grid reveal">
+        <div><p class="eyebrow">06 / CONTACT</p><h2 class="contact-title"><span data-lang="es">Conversemos sobre el próximo problema de datos.</span><span data-lang="en" hidden>Let's discuss the next data problem.</span></h2><p class="contact-copy"><span data-lang="es">Disponible para oportunidades senior en Business Intelligence, analítica avanzada y Data Science. Bogotá, Colombia.</span><span data-lang="en" hidden>Available for senior opportunities in Business Intelligence, advanced analytics, and Data Science. Bogotá, Colombia.</span></p></div>
+        <ul class="contact-links">
+          <li><a href="mailto:andresfere25@gmail.com"><span>Email</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a></li>
+          <li><a href="https://www.linkedin.com/in/andres-felipe-restrepo-melo-cv/" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a></li>
+          <li><a href="https://github.com/andresfere25" target="_blank" rel="noopener noreferrer"><span>GitHub</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a></li>
+          <li><a href="tel:+573209464352"><span>+57 320 946 4352</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="container footer-inner"><span>© 2026 Andrés Felipe Restrepo Melo</span><span>BOGOTÁ / COLOMBIA / UTC-5</span></div></footer>
+
+  <script>
+    (() => {
+      const meta = {
+        es: {
+          title: 'Andrés Restrepo | Business Intelligence y Analítica Avanzada',
+          description: 'Portafolio bilingüe de Andrés Restrepo, especialista senior en Business Intelligence, analítica avanzada y machine learning aplicado.',
+          cv: 'assets/cv/Andres_Restrepo_CV_ES.pdf',
+          nav: 'Navegación principal', menuOpen: 'Abrir menú', menuClose: 'Cerrar menú', language: 'Idioma'
+        },
+        en: {
+          title: 'Andrés Restrepo | Business Intelligence & Advanced Analytics',
+          description: 'Bilingual portfolio of Andrés Restrepo, a senior Business Intelligence, advanced analytics, and applied machine learning specialist.',
+          cv: 'assets/cv/Andres_Restrepo_CV_EN.pdf',
+          nav: 'Main navigation', menuOpen: 'Open menu', menuClose: 'Close menu', language: 'Language'
+        }
+      };
+
+      const menuButton = document.querySelector('.menu-button');
+      const navLinks = document.querySelector('.nav-links');
+      const cvDownload = document.querySelector('#cv-download');
+      const nav = document.querySelector('.site-nav');
+      const langSwitch = document.querySelector('.lang-switch');
+      let currentLang = 'es';
+
+      function setLanguage(lang) {
+        currentLang = lang === 'en' ? 'en' : 'es';
+        document.documentElement.lang = currentLang;
+        document.querySelectorAll('[data-lang]').forEach((node) => { node.hidden = node.dataset.lang !== currentLang; });
+        document.querySelectorAll('[data-set-lang]').forEach((button) => { button.setAttribute('aria-pressed', String(button.dataset.setLang === currentLang)); });
+        document.title = meta[currentLang].title;
+        document.querySelector('meta[name="description"]').setAttribute('content', meta[currentLang].description);
+        document.querySelector('meta[property="og:title"]').setAttribute('content', meta[currentLang].title);
+        document.querySelector('meta[property="og:description"]').setAttribute('content', meta[currentLang].description);
+        cvDownload.href = meta[currentLang].cv;
+        nav.setAttribute('aria-label', meta[currentLang].nav);
+        langSwitch.setAttribute('aria-label', meta[currentLang].language);
+        menuButton.setAttribute('aria-label', navLinks.classList.contains('is-open') ? meta[currentLang].menuClose : meta[currentLang].menuOpen);
+        try { localStorage.setItem('portfolio-language', currentLang); } catch (_) {}
+      }
+
+      document.querySelectorAll('[data-set-lang]').forEach((button) => button.addEventListener('click', () => setLanguage(button.dataset.setLang)));
+
+      menuButton.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('is-open');
+        menuButton.setAttribute('aria-expanded', String(open));
+        menuButton.setAttribute('aria-label', open ? meta[currentLang].menuClose : meta[currentLang].menuOpen);
+      });
+
+      navLinks.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+        navLinks.classList.remove('is-open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', meta[currentLang].menuOpen);
+      }));
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && navLinks.classList.contains('is-open')) {
+          navLinks.classList.remove('is-open');
+          menuButton.setAttribute('aria-expanded', 'false');
+          menuButton.setAttribute('aria-label', meta[currentLang].menuOpen);
+          menuButton.focus();
+        }
+      });
+
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const revealNodes = document.querySelectorAll('.reveal');
+      if (reduceMotion || !('IntersectionObserver' in window)) {
+        revealNodes.forEach((node) => node.classList.add('is-visible'));
+      } else {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: .12 });
+        revealNodes.forEach((node) => revealObserver.observe(node));
+      }
+
+      const sectionLinks = new Map([...navLinks.querySelectorAll('a[href^="#"]')].map((link) => [link.getAttribute('href').slice(1), link]));
+      if ('IntersectionObserver' in window) {
+        const sectionObserver = new IntersectionObserver((entries) => {
+          const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+          if (!visible) return;
+          sectionLinks.forEach((link, id) => id === visible.target.id ? link.setAttribute('aria-current', 'true') : link.removeAttribute('aria-current'));
+        }, { rootMargin: '-24% 0px -62% 0px', threshold: [0, .1, .5] });
+        document.querySelectorAll('main section[id]').forEach((section) => sectionObserver.observe(section));
+      }
+
+      let preferred = 'es';
+      try { preferred = localStorage.getItem('portfolio-language') || (navigator.language.toLowerCase().startsWith('en') ? 'en' : 'es'); } catch (_) {}
+      setLanguage(preferred);
+    })();
+  </script>
 </body>
 </html>
